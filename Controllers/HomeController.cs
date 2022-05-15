@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ScadaProject.CustomFilter;
 using ScadaProject.Models;
 using System.Diagnostics;
 
 namespace ScadaProject.Controllers
 {
+    [SessionCheck]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -12,12 +14,15 @@ namespace ScadaProject.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
         }
-
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("login", "Account");
+        }
         public IActionResult Privacy()
         {
             return View();

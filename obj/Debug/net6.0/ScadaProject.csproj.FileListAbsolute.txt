@@ -558,3 +558,6 @@ D:\WindowApp\WebApplicationTest\ScadaProject\bin\Debug\net6.0\runtimes\win\lib\n
 D:\WindowApp\WebApplicationTest\ScadaProject\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\WindowApp\WebApplicationTest\ScadaProject\obj\Debug\net6.0\ScadaProject.csproj.CopyComplete
 D:\WindowApp\WebApplicationTest\ScadaProject\bin\Debug\net6.0\bundleconfig.json
+D:\WindowApp\WebApplicationTest\ScadaProject\bin\Debug\net6.0\EntityFramework.SqlServer.dll
+D:\WindowApp\WebApplicationTest\ScadaProject\bin\Debug\net6.0\EntityFramework.dll
+D:\WindowApp\WebApplicationTest\ScadaProject\bin\Debug\net6.0\System.Web.Providers.dll

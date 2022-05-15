@@ -27,16 +27,14 @@ namespace ScadaProject.Controllers
                 {
                     if (account.UserName == acc.UserName && account.Password == acc.Password)
                     {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        TempData["Login Error"] = "Wrong Username or Password";
-                        return RedirectToAction("login", "Account");
+                        HttpContext.Session.SetString("UserID", acc.Id.ToString());
+                        HttpContext.Session.SetString("Username", acc.UserName.ToString());
+                        return RedirectToAction("Index", "Home", new { area = "" });
                     }
                 }
             }
-            return View(acc);
+            TempData["Login Error"] = "Wrong Username or Password";
+            return RedirectToAction("login", "Account");
         }
     }
 }
