@@ -1,0 +1,14 @@
+﻿using Microsoft.EntityFrameworkCore;
+using ScadaProject.Models;
+
+namespace ScadaProject.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+            public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+            {
+            }
+            //what ever model you want to create inside the database, you will have to create a DB set inside the application DB context
+            public DbSet<Account> Accounts { get; set; }
+    }
+}

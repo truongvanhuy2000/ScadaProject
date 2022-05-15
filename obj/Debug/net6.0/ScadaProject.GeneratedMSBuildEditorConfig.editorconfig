@@ -11,9 +11,13 @@ build_property.RootNamespace = ScadaProject
 build_property.ProjectDir = D:\WindowApp\WebApplicationTest\ScadaProject\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = D:\WindowApp\WebApplicationTest\ScadaProject
 build_property._RazorSourceGeneratorDebug = 
+
+[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 
 [D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
@@ -25,6 +29,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/WindowApp/WebApplicationTest/ScadaProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/WindowApp/WebApplicationTest/ScadaProject/Views/Shared/_ValidationScriptsPartial.cshtml]
