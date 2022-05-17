@@ -10,7 +10,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     ));
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.AddDistributedMemoryCache();
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(10);

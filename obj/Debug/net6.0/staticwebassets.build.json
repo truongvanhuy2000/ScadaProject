@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fB3Nnz/NXk2Bwfhh8Mpf7hLbpUA69S/1OJEzRxek6mg=",
+  "Hash": "ZhmHB353xuNS+pyNswFUHMn05jeY4RTkItrhp60OuUE=",
   "Source": "ScadaProject",
   "BasePath": "_content/ScadaProject",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootswatchTheme.css"
+    },
+    {
+      "Identity": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\wwwroot\\css\\sidebarTheme.css",
+      "SourceId": "ScadaProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\wwwroot\\",
+      "BasePath": "_content/ScadaProject",
+      "RelativePath": "css/sidebarTheme.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\sidebarTheme.css"
     },
     {
       "Identity": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\wwwroot\\css\\site.css",

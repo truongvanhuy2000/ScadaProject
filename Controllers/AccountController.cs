@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ScadaProject.CustomFilter;
 using ScadaProject.Data;
 using ScadaProject.Models;
 
 namespace ScadaProject.Controllers
 {
+    [SessionCheck2]
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -27,7 +29,7 @@ namespace ScadaProject.Controllers
                 {
                     if (account.UserName == acc.UserName && account.Password == acc.Password)
                     {
-                        HttpContext.Session.SetString("UserID", acc.Id.ToString());
+                        HttpContext.Session.SetString("Password", acc.Password.ToString());
                         HttpContext.Session.SetString("Username", acc.UserName.ToString());
                         return RedirectToAction("Index", "Home", new { area = "" });
                     }

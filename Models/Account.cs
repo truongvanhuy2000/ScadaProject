@@ -8,6 +8,9 @@ namespace ScadaProject.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [DisplayName("Full Name: ")]
+        public string FullName { get; set; }
+        [Required]
         [MaxLength(10)]
         [DisplayName("UserName: ")]
         public string UserName { get; set; }
@@ -15,5 +18,11 @@ namespace ScadaProject.Models
         [MaxLength(10)]
         [DisplayName("Password:  ")]
         public string Password { get; set; }
+        [Required]
+        [DisplayName("Email: ")]
+        public string Email { get; set; }
+        [Required]
+        [DisplayName("Phone: ")]
+        public string Phone { get; set; }
     }
 }

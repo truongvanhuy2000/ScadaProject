@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNet.Providers.Core" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Models\" />
     <Folder Include="Styles\" />
     <Folder Include="wwwroot\images\" />
