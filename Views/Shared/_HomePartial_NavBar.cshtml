@@ -3,11 +3,10 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-<link rel="stylesheet" href="~/css/sidebarTheme.css" asp-append-version="true" />
-@using Microsoft.AspNetCore.Http;
-@inject IHttpContextAccessor HttpContextAccessor
-<!-- The sidebar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<link rel="stylesheet" href="~/css/sidebarTheme.css">
+
+
+@*<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,22 +25,7 @@
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
-
-@*        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>*@
       </ul>
-@*      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>*@
     </div>
   </div>
 </nav>
@@ -49,4 +33,4 @@
   <a class="nav-link active" asp-controller="Home" asp-action="UserManagement">Quản lí người dùng</a>
   <a class="nav-link active" asp-controller="Home" asp-action="Contact">Contact</a>
   <a class="nav-link active" asp-controller="Home" asp-action="About">About</a>
-</div>
+</div>*@

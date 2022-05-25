@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+@model Account
+@Html.AntiForgeryToken()
+<link rel="stylesheet" href="~/css/ContactForm.css" asp-append-version="true">
+<div class="container">
+    <h1>Đăng Ký Người Dùng</h1>
+  <form method="post">
+
+    <label for="FullName">Full Name</label>
+    <span asp-validation-for="FullName" class="text-danger"></span>
+    <input asp-for="FullName" placeholder="Your name..">
+    
+
+    <label for="UserName">Username</label>
+    <span asp-validation-for="UserName" class="text-danger"></span>
+    <input asp-for="UserName" placeholder="Your User Name..">
+    
+
+@*    <label for="lname">Password</label>
+    <input asp-for="Password" type="hidden" placeholder="Your Password..">
+    <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>*@
+    
+
+    <label for="Password">Password</label>
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <input asp-for="Password" class="key" type="text" autocomplete="off"/>
+    
+
+    <label for="Phone">Phone Number</label>
+     <span asp-validation-for="Phone" class="text-danger"></span>
+    <input asp-for="Phone" placeholder="Your Phone Number..">
+   
+
+    <label for="Email">Email</label>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <input asp-for="Email" placeholder="Your Email..">
+    
+
+    <label for="Gender">Gender</label>
+    <select asp-for="Gender" name="gender">
+      <option value="male" >Male</option>
+      <option value="female">Female</option>
+    </select>
+
+
+    <input type="submit" value="Submit">
+
+  </form>
+</div>
+    <script type="text/javascript">
+        const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+ 
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+    </script>

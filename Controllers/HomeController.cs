@@ -31,7 +31,19 @@ namespace ScadaProject.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("login", "Account");
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Register(Account acc)
+        {
+            if(ModelState.IsValid)
+            {
 
+            }
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

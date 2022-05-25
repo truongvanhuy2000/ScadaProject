@@ -21,8 +21,10 @@ namespace ScadaProject.Models
         [Required]
         [DisplayName("Email: ")]
         public string Email { get; set; }
-        [Required]
         [DisplayName("Phone: ")]
         public string Phone { get; set; }
+        [Required]
+        [DisplayName("Gender: ")]
+        public string Gender { get; set; }
     }
 }

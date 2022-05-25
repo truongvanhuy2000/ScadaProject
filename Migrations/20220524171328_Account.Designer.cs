@@ -11,8 +11,8 @@ using ScadaProject.Data;
 namespace ScadaProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220517094039_AddAccountToDatabase")]
-    partial class AddAccountToDatabase
+    [Migration("20220524171328_Account")]
+    partial class Account
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,10 @@ namespace ScadaProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
