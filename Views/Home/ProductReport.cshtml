@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "ProductReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+<table id="table1" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product Date
+            </th>
+            <th>
+                Production Shift
+            </th>
+            <th>
+                Production Line
+            </th>
+            <th>
+                Machine Number
+            </th>
+            <th>
+                Total Packages
+            </th>
+            <th>
+                Damaged package
+            </th>
+            <th>
+                Empty Packages
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="20%">
+                    @obj.ProductName
+                </td>
+                <td width="20%">
+                    @obj.CreatedDateTime
+                </td>
+                <td width="10%">
+                    @obj.ProductionShift
+                </td>
+                 <td width="10%">
+                    @obj.ProductionLine
+                </td>
+                <td width="10%">
+                    @obj.MachineNumber
+                </td>
+                <td width="10%">
+                    @obj.TotalPackage
+                </td>
+                <td width="10%">
+                    @obj.DamagedPackage
+                <td width="10%">
+                    @obj.EmptyPackage
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

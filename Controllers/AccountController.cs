@@ -38,5 +38,10 @@ namespace ScadaProject.Controllers
             TempData["Login Error"] = "Wrong Username or Password";
             return RedirectToAction("login", "Account");
         }
+        [HttpGet]
+        public IActionResult RegisterAccount()
+        {
+            return View();
+        }
     }
 }

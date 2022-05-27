@@ -1,54 +1,73 @@
 ﻿
 @{
     ViewData["Title"] = "Login";
-	Layout = "~/Views/Shared/_loginLayout.cshtml";
+	Layout = "";
 }
-@model Account
-<h1 class="text-primary">Sign In</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Login-style-with-prefix.css" asp-append-version="true">
+    <style>
+        .srouce{
+            text-align: center;
+            color: #ffffff;
+            padding: 10px;
+        }
+    </style>
+</head>
 @Html.AntiForgeryToken()
-@if(TempData["Login Error"] != null) 
+	<body>
+
+    <div class="main-container">
+        <div class="form-container">
+
+            <div class="form-body">
+@*                <h2 class="title">Log in with</h2>
+                <div class="social-login">
+                    <ul>
+                        <li class="google"><a href="#">Google</a></li>
+                        <li class="fb"><a href="#">Facebook</a></li>
+                    </ul>
+                </div><!-- SOCIAL LOGIN -->*@
+
+@*                <div class="_or">or</div>*@
+				@if(TempData["Login Error"] != null) 
 {
-		<div id="popupdiv" style="border: 1px solid red;">
-            @TempData["Login Error"]
-        </div>
+					<div id="popupdiv" style="border: 1px solid red;">
+						@TempData["Login Error"]
+					</div>
 }
+                <form action="" class="the-form" method="post">
 
-<hr />
-	<form method="post">
-		<div class="mb-3">
-			<label asp-for="UserName"></label>
-			<input asp-for="UserName" class="form-control" />
-			<span asp-validation-for="UserName" class="text-danger"></span>
-		</div>
+                    <label for="Username">Username</label>
+                    <input type="text" name="Username" id="Username" placeholder="Enter your username">
 
-		<div class="mb-3">
-			<label asp-for="Password"></label>
-			<input type="password" input asp-for="Password" class="form-control" />
-			<span asp-validation-for="Password" class="text-danger"></span>
-		</div>
-		
-		<div class="text-right p-t-13 p-b-23">
-			<span class="txt1">
-				Forgot
-			</span>
+                    <label for="Password">Password</label>
+                    <input type="password" name="Password" id="Password" placeholder="Enter your password">
 
-			<a href="#" class="txt2">
-				Username / Password?
-			</a>
-		</div>
-			<button type="submit" class="btn btn-primary" style="width:150px">Sign In</button>
-		<div class="flex-col-c p-t-170 p-b-40">
-			<span class="txt1 p-b-9">
-				Don’t have an account?
-			</span>
+                    <input type="submit" asp-controller="Account" asp-action="Login" value="Log In">
 
-			<a href="#" class="txt3">
-				Sign up now
-			</a>
-		</div>
-	</form>
+                </form>
+
+            </div><!-- FORM BODY-->
+
+            <div class="form-footer">
+                <div>
+                    <span>Don't have an account?</span> <a asp-controller="Account" asp-action="RegisterAccount">Sign Up</a>
+                </div>
+            </div><!-- FORM FOOTER -->
+
+        </div><!-- FORM CONTAINER -->
+    </div>
+
+</body>
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />
     }
 }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
