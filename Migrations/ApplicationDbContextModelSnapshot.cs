@@ -121,6 +121,30 @@ namespace ScadaProject.Migrations
 
                     b.ToTable("Products");
                 });
+
+            modelBuilder.Entity("ScadaProject.Models.SettingCaSanXuat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("NameTruongCa")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("TimeStarMinute")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TimeStartHour")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SettingCaSanXuats");
+                });
 #pragma warning restore 612, 618
         }
     }
