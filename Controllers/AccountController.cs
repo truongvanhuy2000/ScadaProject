@@ -30,8 +30,9 @@ namespace ScadaProject.Controllers
                 {
                     if (account.UserName == acc.UserName && account.Password == acc.Password)
                     {
-                        HttpContext.Session.SetString("Password", acc.Password.ToString());  //
-                        HttpContext.Session.SetString("Username", acc.UserName.ToString());
+                        HttpContext.Session.SetString("Password", account.Password.ToString());
+                        HttpContext.Session.SetString("NhiemVu", account.NhiemVu.ToString());
+                        HttpContext.Session.SetString("Username", account.UserName.ToString());
                         return RedirectToAction("Index", "Home", new { area = "" });
                     }
                 }

@@ -38,6 +38,9 @@
             <th>
                 Gender
             </th>
+            <th>
+                Nhiem Vu
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -45,7 +48,7 @@
         @foreach(var obj in Model)
         {
             <tr>
-                <td width="30%">
+                <td width="20%">
                     @obj.FullName
                 </td>
                 <td width="20%">
@@ -59,6 +62,9 @@
                 </td>
                 <td width="10%">
                     @obj.Gender
+                </td>
+                <td width="10%">
+                    @obj.NhiemVu
                 </td>
                 <td>
                     <div class="w-75 btn-group" role="group">

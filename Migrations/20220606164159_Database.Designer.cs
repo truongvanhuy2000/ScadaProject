@@ -12,8 +12,8 @@ using ScadaProject.Data;
 namespace ScadaProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220526154404_Ass")]
-    partial class Ass
+    [Migration("20220606164159_Database")]
+    partial class Database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,6 +41,10 @@ namespace ScadaProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NhiemVu")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -122,6 +126,30 @@ namespace ScadaProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ScadaProject.Models.SettingCaSanXuat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("NameTruongCa")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("TimeStarMinute")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TimeStartHour")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SettingCaSanXuats");
                 });
 #pragma warning restore 612, 618
         }

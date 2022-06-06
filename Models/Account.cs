@@ -27,6 +27,9 @@ namespace ScadaProject.Models
         [DisplayName("Gender: ")]
         public string Gender { get; set; }
 
-        
+        [Required]
+        [DisplayName("NhiemVu: ")]
+        public string NhiemVu { get; set; }
+
     }
 }

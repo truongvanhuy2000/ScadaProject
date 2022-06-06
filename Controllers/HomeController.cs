@@ -31,22 +31,22 @@ namespace ScadaProject.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("login", "Account");
         }
-        public IActionResult Register()
-        {
-            return View();
-        }
-
+        [HienTruongCheck]
         public IActionResult SetGeneralInformation()
         {
             return View();
         }
-
+        [HienTruongCheck]
         public IActionResult SettingSanXuat()
         {
             IEnumerable<SettingCaSanXuat> Setting = _db.SettingCaSanXuats.ToList();
             return View(Setting);
         }
-
+        [AdminCheck]
+        public IActionResult Register()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult Register(Account acc)
         {
@@ -68,6 +68,7 @@ namespace ScadaProject.Controllers
             }
             return View();
         }
+        [AdminCheck]
         public IActionResult Delete(int? id)
         {
             if(id == null)
@@ -84,46 +85,47 @@ namespace ScadaProject.Controllers
             TempData["Delete Success"] = "Deleted Sucessfully";
             return RedirectToAction("UserManagement");
         }
-        public string RandomProductName()
-        {
-            Random rand = new Random();
-            int number = rand.Next(0, 5); //returns random number between 0-99
-            switch (number)
-            {
-                case 0:
-                    return "Gạo";
-                case 1:
-                    return "Bột Canh";
-                case 2:
-                    return "Lúa";
-                case 3:
-                    return "Bột Mỳ";
-                case 4:
-                    return "Hạt Tiêu";
-                case 5:
-                    return "Mỳ Tôm";
-            }
-            return null; 
-        }
-        public int RandomNumber(int min, int max)
-        {
-            Random rand = new Random();
-            int number = rand.Next(min, max); //returns random number between 0-99
-            return number;
-        }
-        public DateTime GenerateRandomDates()
-        {
-            var rnd = new Random(Guid.NewGuid().GetHashCode());
+        //public string RandomProductName()
+        //{
+        //    Random rand = new Random();
+        //    int number = rand.Next(0, 5); //returns random number between 0-99
+        //    switch (number)
+        //    {
+        //        case 0:
+        //            return "Gạo";
+        //        case 1:
+        //            return "Bột Canh";
+        //        case 2:
+        //            return "Lúa";
+        //        case 3:
+        //            return "Bột Mỳ";
+        //        case 4:
+        //            return "Hạt Tiêu";
+        //        case 5:
+        //            return "Mỳ Tôm";
+        //    }
+        //    return null; 
+        //}
+        //public int RandomNumber(int min, int max)
+        //{
+        //    Random rand = new Random();
+        //    int number = rand.Next(min, max); //returns random number between 0-99
+        //    return number;
+        //}
+        //public DateTime GenerateRandomDates()
+        //{
+        //    var rnd = new Random(Guid.NewGuid().GetHashCode());
 
-                var year = rnd.Next(1995, 2021);
-                var month = rnd.Next(1, 13);
-                var days = rnd.Next(1, DateTime.DaysInMonth(year, month) + 1);
+        //        var year = rnd.Next(1995, 2021);
+        //        var month = rnd.Next(1, 13);
+        //        var days = rnd.Next(1, DateTime.DaysInMonth(year, month) + 1);
 
-                return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000));
-        }
+        //        return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000));
+        //}
+        [GiamSatCheck]
         public IActionResult ProductReport()
         {
-            //for(int i = 0; i < 100; i++)
+            //for (int i = 0; i < 100; i++)
             //{
             //    Product obj = new Product();
             //    obj.ProductName = RandomProductName();

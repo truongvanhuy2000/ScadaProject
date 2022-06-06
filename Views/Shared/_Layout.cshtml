@@ -54,35 +54,40 @@
                         <li>
                             <a asp-controller="Home" asp-action="UserManagement"><i class="fas fa-list"></i> Danh Sách</a>
                         </li>
-                        <li>
+                        @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin")
+                        {
+                            <li>
                             <a asp-controller="Home" asp-action="Register"><i class="fa fa-plus-circle"></i> Đăng Ký</a>
-                        </li>
+                            </li>
+                        }
+                        
                     </ul>
                 </li>
-                <li>
-                    <a asp-controller="Home" asp-action="SetGeneralInformation">
-                        <i class="fas fa-image"></i>
-                        Cài đặt thông tin chung
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Home" asp-action="SettingSanXuat">
-                        <i class="fas fa-image"></i>
-                        Cài đặt ca sản xuất
-                    </a>
-                </li>
+                @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Hien Truong")
+                {
+                    <li>
+                        <a asp-controller="Home" asp-action="SetGeneralInformation">
+                            <i class="fas fa-image"></i>
+                            Cài đặt thông tin chung
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="SettingSanXuat">
+                            <i class="fas fa-image"></i>
+                            Cài đặt ca sản xuất
+                        </a>
+                    </li>
+                }
+                @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat")
+                {
                 <li>
                     <a asp-controller="Home" asp-action="ProductReport">
                         <i class="fas fa-image"></i>
                         Báo cáo sản phẩm
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-paper-plane"></i>
-                        Contact
-                    </a>
-                </li>
+                }
+
             </ul>
 
             <ul class="list-unstyled CTAs">
