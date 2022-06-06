@@ -18,6 +18,7 @@ namespace ScadaProject.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login(Account acc )
@@ -29,7 +30,7 @@ namespace ScadaProject.Controllers
                 {
                     if (account.UserName == acc.UserName && account.Password == acc.Password)
                     {
-                        HttpContext.Session.SetString("Password", acc.Password.ToString());
+                        HttpContext.Session.SetString("Password", acc.Password.ToString());  //
                         HttpContext.Session.SetString("Username", acc.UserName.ToString());
                         return RedirectToAction("Index", "Home", new { area = "" });
                     }
@@ -43,5 +44,29 @@ namespace ScadaProject.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Register(Account acc)
+        {
+            IEnumerable<Account> objCategoryList = _db.Accounts.ToList();
+            if (ModelState.IsValid)
+            {
+                foreach (var item in objCategoryList)
+                {
+                    if (item.UserName == acc.UserName)
+                    {
+                        TempData["Register Error"] = "Username has been used";
+                        return RedirectToAction("Register");
+                    }
+                    _db.Accounts.Add(acc);
+                    _db.SaveChanges();
+                    TempData["Register Success"] = "Account created successfully";
+                    return RedirectToAction("UserManagement");
+                }
+            }
+            return View();
+        }
+
+
     }
 }

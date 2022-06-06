@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SettingCaSanXuat>
+@{
+    ViewData["Title"] = "SettingProduction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<h1>Cài đặt ca sản xuất</h1>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="30%">
+                    @obj.TimeStartHour
+                </td>
+                <td width="20%">
+                    @obj.TimeStartHour
+                </td>
+                <td width="50%">
+                    @obj.NameTruongCa
+                </td>                        
+            </tr>
+        }
+    </tbody>
+</table>
+
+
