@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
 namespace ScadaProject.Models
 {
     public class Product

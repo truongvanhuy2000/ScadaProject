@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9efa1df0-4c74-465a-8d3b-c60d33f7dddc": {
+      "ProjectGuid": "9efa1df0-4c74-465a-8d3b-c60d33f7dddc",
+      "DisplayName": "ScadaProject",
+      "ColorIndex": 0
+    },
+    "15e769bb-ce94-46c2-a75e-e3482855a5c1": {
+      "ProjectGuid": "15e769bb-ce94-46c2-a75e-e3482855a5c1",
+      "DisplayName": "ScadaProject",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "9b4ebc95-0f89-4d9c-93c4-ad34872131c5": {
+      "ProjectGuid": "9b4ebc95-0f89-4d9c-93c4-ad34872131c5",
+      "DisplayName": "ScadaProject",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

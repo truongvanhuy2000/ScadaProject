@@ -35,6 +35,18 @@ namespace ScadaProject.Controllers
         {
             return View();
         }
+
+        public IActionResult SetGeneralInformation()
+        {
+            return View();
+        }
+
+        public IActionResult SettingSanXuat()
+        {
+            IEnumerable<SettingCaSanXuat> Setting = _db.SettingCaSanXuats.ToList();
+            return View(Setting);
+        }
+
         [HttpPost]
         public IActionResult Register(Account acc)
         {
