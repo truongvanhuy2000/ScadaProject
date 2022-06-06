@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "w2UNqPg10HTNKsweL4U4/OopxVCzebaVE886u6j+wO4=",
+=======
+  "Hash": "fm7orl/gm0z9jAixKiAnJCQDe5otnhDnSYHsfQAjAT8=",
+>>>>>>> 2896e57ee97433fc3c14bff1e265b49369e8e017
   "Source": "ScadaProject",
   "BasePath": "_content/ScadaProject",
   "Mode": "Default",
@@ -51,10 +55,17 @@
       "OriginalItemSpec": "C:\\Users\\admin\\Desktop\\My Git\\ScadaProject\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ScadaProject.bundle.scp.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\admin\\Desktop\\My Git\\ScadaProject\\wwwroot\\css\\Contact.css",
       "SourceId": "ScadaProject",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\admin\\Desktop\\My Git\\ScadaProject\\wwwroot\\",
+=======
+      "Identity": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\wwwroot\\css\\Contact.css",
+      "SourceId": "ScadaProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\wwwroot\\",
+>>>>>>> 2896e57ee97433fc3c14bff1e265b49369e8e017
       "BasePath": "_content/ScadaProject",
       "RelativePath": "css/Contact.css",
       "AssetKind": "All",
@@ -1411,7 +1422,11 @@
       "OriginalItemSpec": "wwwroot\\images\\icons\\map-marker.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\admin\\Desktop\\My Git\\ScadaProject\\wwwroot\\js\\main.js",
+=======
+      "Identity": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\wwwroot\\js\\main.js",
+>>>>>>> 2896e57ee97433fc3c14bff1e265b49369e8e017
       "SourceId": "ScadaProject",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\admin\\Desktop\\My Git\\ScadaProject\\wwwroot\\",
