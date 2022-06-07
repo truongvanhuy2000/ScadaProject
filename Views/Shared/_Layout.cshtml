@@ -81,11 +81,19 @@
                 @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat")
                 {
                 <li>
-                    <a asp-controller="Home" asp-action="ProductReport">
+                    <a asp-controller="Home" asp-action="SettingPLC">
                         <i class="fas fa-image"></i>
-                        Báo cáo sản phẩm
+                        Cài đặt thông số PLC
                     </a>
                 </li>
+
+                <li>
+                    <a asp-controller="Home" asp-action="ProductReport">
+                        <i class="fas fa-image"></i>
+                        Báo cáo hiện trường
+                    </a>
+                </li>
+
                 }
 
             </ul>

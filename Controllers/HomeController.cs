@@ -21,6 +21,12 @@ namespace ScadaProject.Controllers
         {
             return View();
         }
+
+        public IActionResult SettingPLC()
+        {
+            return View();
+        }
+
         public IActionResult UserManagement()
         {
             IEnumerable<Account> objCategoryList = _db.Accounts.ToList();

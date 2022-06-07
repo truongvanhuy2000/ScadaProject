@@ -1,0 +1,148 @@
+﻿@{
+    ViewData["Title"] = "SettingProduction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+	.whole_page{
+        font-family: 'Roboto';
+	}
+	
+	.title{
+		font-size: 50px;
+		background-color: #F0F8FF;
+		position: relative;
+		left: 10px;
+	}
+
+	td.test{
+		position: relative;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+        text-align: left;
+		font-family: 'Roboto';
+		font-size: 18px;
+		font-weight: 600;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		text-align: right;
+	}
+	
+	table.data{
+		position: relative;
+		top: 25px;
+        border-collapse: collapse;
+		cursor:pointer;
+        width: 100%;
+	}
+
+	.form_input {
+		position: relative;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+        text-align: left;
+		font-family: 'Roboto';
+		font-size: 18px;
+		font-weight: 600;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		left: 38px;
+	}
+
+	.truong_ca{
+    	margin-left: 8px;
+    }
+	
+	.botton_save{
+		background-color: #228B22;
+		color: white;
+		font-size: 20px;
+		padding-top: 9px;
+		padding-bottom: 9px;
+		padding-left: 25px;
+		padding-right: 25px;
+		margin-top: 8px;
+		border-color: white;
+		margin-left: 38px;
+	}
+</style>
+
+
+<body class="whole_page">
+<h1 class="title">Cài đặt thông số PLC</h1>
+	<table style="width:100%" class="data">
+	  <tr>
+		<td width="20" class="test">Tốc độ chuẩn(gói/phút):</td>
+		<td width="80%" class="form_input">
+			<form class="input_name">
+				<input class="truong_ca" size="60" type="text" placeholder="125"/> 
+			</form>
+		</td>
+	  </tr>
+	<table style="width:100%" class="data">
+	  <tr>
+		<td width="20%" class="test">Thời gian tính dừng máy(x0.1s):</td>
+		<td width="80%" class="form_input">
+			<form class="input_name">
+				<input class="truong_ca" size="60" type="text" placeholder="52"/> 
+			</form>
+		</td>
+	  </tr>
+	<table style="width:100%" class="data">
+	  <tr>
+		<td width="20%" class="test">Thời gian chấp nhận gói(x0.1s):</td>
+		<td width="80%" class="form_input">
+			<form class="input_name">
+				<input class="truong_ca" size="60" type="text" placeholder="2"/> 
+			</form>
+		</td>
+	  </tr>
+	<table style="width:100%" class="data">
+	  <tr>
+		<td width="20%" class="test">Thời gian tính gói cấn(x0.1s):</td>
+		<td width="80%" class="form_input">
+			<form class="input_name">
+				<input class="truong_ca" size="60" type="text" placeholder="5"/> 
+			</form>
+		</td>
+	  </tr>
+	<table style="width:100%" class="data">
+	  <tr>
+		<td width="20%" class="test">Thời gian đẩy gói cấn(x0.1s):</td>
+		<td width="80%" class="form_input">
+			<form class="input_name">
+				<input class="truong_ca" size="60" type="text" placeholder="7"/> 
+			</form>
+		</td>
+	  </tr>
+	  <tr>
+		<td width="20%" class="test">Thời gian cập nhập PLC(x0.1s):</td>
+		<td width="80%" class="form_input">
+			<form class="input_name">
+				<input class="truong_ca" size="60" type="text" placeholder="70"/> 
+			</form>
+		</td>
+	  </tr>
+	  <tr>
+		<td width="20%" class="test">Thời gian Xi-Lanh đẩy gói(x0.1s):</td>
+		<td width="80%" class="form_input">
+			<form class="input_name">
+				<input class="truong_ca" size="60" type="text" placeholder="10"/> 
+			</form>
+		</td>
+	  </tr>
+	  <tr>
+		<td width="20%" class="test_save"></td>
+		<td width="80%" class="td_save">
+			<button class="botton_save"> save </button>
+		</td>
+	  </tr>
+	</table>
+</body>

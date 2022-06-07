@@ -8,65 +8,69 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ScadaProject
 build_property.RootNamespace = ScadaProject
-build_property.ProjectDir = D:\WindowApp\WebApplicationTest\ScadaProject\
+build_property.ProjectDir = C:\Users\admin\Desktop\My Git\MVC_Scada\ScadaProject\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = D:\WindowApp\WebApplicationTest\ScadaProject
+build_property.MSBuildProjectDirectory = C:\Users\admin\Desktop\My Git\MVC_Scada\ScadaProject
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Account/Login.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Account/RegisterAccount.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Account/RegisterAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlckFjY291bnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/Index.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/ProductReport.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/ProductReport.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0UmVwb3J0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/Register.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/SetGeneralInformation.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/SetGeneralInformation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXRHZW5lcmFsSW5mb3JtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/SettingSanXuat.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/SettingPLC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXR0aW5nUExDLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/SettingSanXuat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXR0aW5nU2FuWHVhdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/UserManagement.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/UserManagement.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyTWFuYWdlbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Home/UserPage.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Home/UserPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Shared/Error.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/_ViewImports.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/_ViewStart.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/WindowApp/WebApplicationTest/ScadaProject/Views/Shared/_Layout.cshtml]
+[C:/Users/admin/Desktop/My Git/MVC_Scada/ScadaProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2a5yg6mxoy

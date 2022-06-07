@@ -7,26 +7,166 @@
 @using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor HttpContextAccessor
 
-<!DOCTYPE html>
-<h1>Cài đặt ca sản xuất</h1>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
-<table class="table table-bordered table-striped" style="width:100%">
-    <tbody>
-        @foreach(var obj in Model)
-        {
-            <tr>
-                <td width="30%">
-                    @obj.TimeStartHour
-                </td>
-                <td width="20%">
-                    @obj.TimeStartHour
-                </td>
-                <td width="50%">
-                    @obj.NameTruongCa
-                </td>                        
-            </tr>
-        }
-    </tbody>
-</table>
+<style>
+	.whole_page{
+        font-family: 'Roboto';
+	}
+
+	.test_ca{
+		font-size: 22px;
+		text-transform: uppercase;
+		border-top: 1px solid #ccc;
+		font-weight: 600;
+
+	}
+
+	td.test{
+		position: relative;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+        text-align: left;
+		font-family: 'Roboto';
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 18px;
+		font-weight: 600;
+	}
+	
+	.test_input {
+		position: relative;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+        text-align: left;
+		font-family: 'Roboto';
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 18px;
+		font-weight: 600;
+		left: 22px;
+	}
+
+	table.data{
+		position: relative;
+		top: 25px;
+        border-collapse: collapse;
+		cursor:pointer;
+        width: 100%;
+	}
+	
+	.truong_ca{
+    	position: relative;
+		padding-top: 3px;
+		padding-bottom: 3px;
+    }
+
+	.span_hour{
+		position: relative;
+		left: 10px;
+	}
+
+	.title{
+		font-size: 38px;
+		background-color: #F0F8FF;
+	}
+	
+</style>
+<body class="whole_page">
+<h1 class="title">Cài đặt ca sản xuất</h1>
+
+	<table style="width:100%" class="data">
+	  <tr>
+		<td width="15%" class="test_ca">Ca 1:</td>
+		<td width="5%" class="test">Thời gian bắt đầu:</td>
+		<td width="5%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="40" type="text" placeholder="Giờ"/> 
+			</form>
+		</td>
+		<td width="15%" class="test"></td>
+		<td width="15%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="40" type="text" placeholder="Phút"/> 
+			</form>
+		</td>
+		<td width="15%" class="test"></td>
+	  </tr>
+	  <tr>
+		<td width="5%" class="test"> </td>
+		<td width="15%" class="test">Trưởng ca</td>
+		<td width="5%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="70" type="text" placeholder="Nhập tên trưởng ca"/>
+			</form>
+		</td>
+		<td width="15%" class="test"> </td>
+		<td width="15%" class="test"> </td>
+		<td width="15%" class="test"> </td>
+		  
+	  </tr>
+	  <tr>
+		<td width="5%" class="test_ca">Ca 2:</td>
+		<td width="15%" class="test">Thời gian bắt đầu:</td>
+		<td width="5%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="40" type="text" placeholder="Giờ"/> 
+			</form>
+		</td>
+		<td width="15%" class="test"></td>
+		<td width="15%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="40" type="text" placeholder="Phút"/> 
+			</form>
+		</td>
+		<td width="15%" class="test"></td>
+	  </tr>
+	  <tr>
+		<td width="5%" class="test"> </td>
+		<td width="15%" class="test">Trưởng ca</td>
+		<td width="5%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="70" type="text" placeholder="Nhập tên trưởng ca"/>
+			</form>
+		</td>
+		<td width="15%" class="test_ca"> </td>
+		<td width="15%" class="test"> </td>
+		<td width="15%" class="test"> </td>	  
+	  </tr>
+	  <tr>
+		<td width="5%" class="test_ca">Ca 3:</td>
+		<td width="15%" class="test">Thời gian bắt đầu:</td>
+		<td width="5%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="40" type="text" placeholder="Giờ"/> 
+			</form>
+		</td>
+		<td width="15%" class="test"></td>
+		<td width="15%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="40" type="text" placeholder="Phút"/> 
+		</form>
+		</td>
+		<td width="15%" class="test"></td>
+	  </tr>
+	  <tr>
+		<td width="5%" class="test"> </td>
+		<td width="15%" class="test">Trưởng ca</td>
+		<td width="5%" class="test_input">
+			<form class="input_name">
+				<input class="truong_ca" size="70" type="text" placeholder="Nhập tên trưởng ca"/>
+			</form>
+		</td>
+		<td width="15%" class="test"> </td>
+		<td width="15%" class="test"> </td>
+		<td width="15%" class="test"> </td>  
+	  </tr>
+	</table>
+</body>
+
+
+
 
 
