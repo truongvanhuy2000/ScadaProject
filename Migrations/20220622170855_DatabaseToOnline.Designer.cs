@@ -12,8 +12,8 @@ using ScadaProject.Data;
 namespace ScadaProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220606164159_Database")]
-    partial class Database
+    [Migration("20220622170855_DatabaseToOnline")]
+    partial class DatabaseToOnline
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

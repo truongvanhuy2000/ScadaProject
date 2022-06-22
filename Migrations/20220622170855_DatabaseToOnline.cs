@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ScadaProject.Migrations
 {
-    public partial class Database : Migration
+    public partial class DatabaseToOnline : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
