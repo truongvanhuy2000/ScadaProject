@@ -46,10 +46,14 @@
                         <i class="fas fa-home"></i>
                         Trang Chủ
                     </a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
-                        <i class="fas fa-user"></i>
-                        Quản Lí
-                    </a>
+                    @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin")
+                     {
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
+                            <i class="fas fa-user"></i>
+                            Quản Lí
+                        </a>                           
+                     }
+
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a asp-controller="Home" asp-action="UserManagement"><i class="fas fa-list"></i> Danh Sách</a>
@@ -77,15 +81,17 @@
                             Cài đặt ca sản xuất
                         </a>
                     </li>
+
+                    <li>
+                        <a asp-controller="Home" asp-action="SettingPLC">
+                            <i class="fas fa-image"></i>
+                            Cài đặt thông số PLC
+                        </a>
+                    </li>
                 }
+
                 @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat")
                 {
-                <li>
-                    <a asp-controller="Home" asp-action="SettingPLC">
-                        <i class="fas fa-image"></i>
-                        Cài đặt thông số PLC
-                    </a>
-                </li>
 
                 <li>
                     <a asp-controller="Home" asp-action="ProductReport">
