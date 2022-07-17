@@ -1,11 +1,10 @@
-﻿@model IEnumerable<SettingCaSanXuat>
+﻿
 @{
     ViewData["Title"] = "SettingProduction";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using Microsoft.AspNetCore.Http;
-@inject IHttpContextAccessor HttpContextAccessor
+@model SettingCaSanXuat
+@Html.AntiForgeryToken()
+@*<link rel="stylesheet" href="~/css/ContactForm.css" asp-append-version="true">*@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,98 +71,139 @@
 		font-size: 38px;
 		background-color: #F0F8FF;
 	}
+
+/*	.Name_truong_ca {
+		position: relative;
+		left: 130px;
+		bottom: -9px;
+	}*/
+
+	.text-inf {
+		position: relative;
+		left: 30px;
+	}
+		
+.Name_truong_ca {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  left: 40px;
+}
+
+		
+.time {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;	
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  left: 70px;
+}
+
+input[type=submit] {
+  width: 35%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  left: 160px;
+  bottom: 8px;
+
+  
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.div_kip {
+	position: relative;
+	bottom: 5px;
+	
+	font-size: 30px;
+	font-weight: 600;
+	background-color: #D3D3D3;
+	background-size: cover;
+}
+
 	
 </style>
 <body class="whole_page">
-<h1 class="title">Cài đặt ca sản xuất</h1>
+@*<h1 class="title">Cài đặt ca sản xuất</h1>*@
+@if(TempData["Setting SanXuat Error"] != null) 
+{
+		<div id="popupdiv" style="border: 1px solid red;">
+            @TempData["Setting SanXuat Error"]
+        </div>
+}
+<div class="div_kip">Kíp 1</div>
+ <form asp-controller="Home" asp-action="SetKip1" method="post">
 
-	<table style="width:100%" class="data">
-	  <tr>
-		<td width="15%" class="test_ca">Ca 1:</td>
-		<td width="5%" class="test">Thời gian bắt đầu:</td>
-		<td width="5%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="40" type="text" placeholder="Giờ"/> 
-			</form>
-		</td>
-		<td width="15%" class="test"></td>
-		<td width="15%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="40" type="text" placeholder="Phút"/> 
-			</form>
-		</td>
-		<td width="15%" class="test"></td>
-	  </tr>
-	  <tr>
-		<td width="5%" class="test"> </td>
-		<td width="15%" class="test">Trưởng ca</td>
-		<td width="5%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="70" type="text" placeholder="Nhập tên trưởng ca"/>
-			</form>
-		</td>
-		<td width="15%" class="test"> </td>
-		<td width="15%" class="test"> </td>
-		<td width="15%" class="test"> </td>
-		  
-	  </tr>
-	  <tr>
-		<td width="5%" class="test_ca">Ca 2:</td>
-		<td width="15%" class="test">Thời gian bắt đầu:</td>
-		<td width="5%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="40" type="text" placeholder="Giờ"/> 
-			</form>
-		</td>
-		<td width="15%" class="test"></td>
-		<td width="15%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="40" type="text" placeholder="Phút"/> 
-			</form>
-		</td>
-		<td width="15%" class="test"></td>
-	  </tr>
-	  <tr>
-		<td width="5%" class="test"> </td>
-		<td width="15%" class="test">Trưởng ca</td>
-		<td width="5%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="70" type="text" placeholder="Nhập tên trưởng ca"/>
-			</form>
-		</td>
-		<td width="15%" class="test_ca"> </td>
-		<td width="15%" class="test"> </td>
-		<td width="15%" class="test"> </td>	  
-	  </tr>
-	  <tr>
-		<td width="5%" class="test_ca">Ca 3:</td>
-		<td width="15%" class="test">Thời gian bắt đầu:</td>
-		<td width="5%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="40" type="text" placeholder="Giờ"/> 
-			</form>
-		</td>
-		<td width="15%" class="test"></td>
-		<td width="15%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="40" type="text" placeholder="Phút"/> 
-		</form>
-		</td>
-		<td width="15%" class="test"></td>
-	  </tr>
-	  <tr>
-		<td width="5%" class="test"> </td>
-		<td width="15%" class="test">Trưởng ca</td>
-		<td width="5%" class="test_input">
-			<form class="input_name">
-				<input class="truong_ca" size="70" type="text" placeholder="Nhập tên trưởng ca"/>
-			</form>
-		</td>
-		<td width="15%" class="test"> </td>
-		<td width="15%" class="test"> </td>
-		<td width="15%" class="test"> </td>  
-	  </tr>
-	</table>
+    <div for="FullName">Tên trưởng ca:
+    <span asp-validation-for="NameTruongCa" class="text-danger"></span>
+    <input class="Name_truong_ca" type="text" width="100%" asp-for="NameTruongCa" placeholder="Tên trưởng ca..">
+    </div>
+	<div>
+    <label  for="UserName">Thời gian:</label>
+    <span asp-validation-for="TimeStartHour" class="text-danger"></span>
+    <input type="text" asp-for="TimeStartHour" class="time" placeholder="Giờ..">
+	
+    <label  for="UserName"></label>
+    <span asp-validation-for="TimeStarMinute" class="text"></span>
+    <input type="text" class="time" asp-for="TimeStarMinute" placeholder="Phút..">
+	</div>
+	<input class = "button-inf" type="submit" value="Submit">
+</form>
+<div class="div_kip">Kíp 2</div>
+ <form asp-controller="Home" asp-action="SetKip2" method="post">
+
+    <div for="FullName">Tên trưởng ca:
+    <span asp-validation-for="NameTruongCa" class="text-danger"></span>
+    <input class="Name_truong_ca" type="text" width="100%" asp-for="NameTruongCa" placeholder="Tên trưởng ca..">
+    </div>
+	<div>
+    <label  for="UserName">Thời gian:</label>
+    <span asp-validation-for="TimeStartHour" class="text-danger"></span>
+    <input type="text" asp-for="TimeStartHour" class="time" placeholder="Giờ..">
+	
+    <label  for="UserName"></label>
+    <span asp-validation-for="TimeStarMinute" class="text"></span>
+    <input type="text" class="time" asp-for="TimeStarMinute" placeholder="Phút..">
+	</div>
+	<input class = "button-inf" type="submit" value="Submit">
+</form>
+
+<div class="div_kip">Kíp 3</div>
+
+ <form asp-controller="Home" asp-action="SetKip3" method="post">
+
+    <div for="FullName">Tên trưởng ca:
+    <span asp-validation-for="NameTruongCa" class="text-danger"></span>
+    <input class="Name_truong_ca" type="text" width="100%" asp-for="NameTruongCa" placeholder="Tên trưởng ca..">
+    </div>
+	<div>
+    <label  for="UserName">Thời gian:</label>
+    <span asp-validation-for="TimeStartHour" class="text-danger"></span>
+    <input type="text" asp-for="TimeStartHour" class="time" placeholder="Giờ..">
+	
+    <label  for="UserName"></label>
+    <span asp-validation-for="TimeStarMinute" class="text"></span>
+    <input type="text" class="time" asp-for="TimeStarMinute" placeholder="Phút..">
+	</div>
+	<input class = "button-inf" type="submit" value="Submit">
+</form>
 </body>
 
 

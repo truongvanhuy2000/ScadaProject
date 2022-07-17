@@ -1,6 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+@model ScadaProject.Models.Product
+
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#example').DataTable({
+  "ordering": false
+});
+});
+</script>
+
 <!DOCTYPE html>
 <html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -188,28 +202,28 @@
 <table width="100%"> 
 	<td class="infor_student">
 		<div class="viet">
-			<img width = "100" height = "100" src= "https://scontent.fhan4-3.fna.fbcdn.net/v/t1.15752-9/274935089_929498461063397_6362008838906739657_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=ae9488&_nc_ohc=hFjynTo7I6oAX9UurBw&_nc_ht=scontent.fhan4-3.fna&oh=03_AVK66AXP-nRRhoqgARrEKrP80UBxdwnzVHOE2e-sDrCZiA&oe=62C1898C"/>
+			<img width = "100" height = "100" src= "https://yt3.ggpht.com/X9s-jIaVYhJDldHFbfOv3ybctuX29zvBecAnDcR4glPWxqx70oGcFXiwiFlHnJnU8xsXASJXEvo=s900-c-k-c0x00ffffff-no-rj"/>
 			<span class = "viet_name">Trịnh Tiến Việt </span>
 			<div class = "viet_mssv">MSSV: 20181839</div>
 		</div>
 	</td>
 	<td class="infor_student">
 		<div class="viet">
-			<img width = "100" height = "100" src= "https://scontent.fhan3-1.fna.fbcdn.net/v/t1.15752-9/282166187_580975680216817_4163499194866242650_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=TiqfOdbI4TsAX95GLGd&_nc_oc=AQlEWPkKn_Ef1WqCqmJUMsfVOA_7SY1FlS91R83eixTp95UTqwOWorlxFruzwbK4KedePeVDs3byS19BFojZp8SD&_nc_ht=scontent.fhan3-1.fna&oh=03_AVL52rFMxDOlJdN1PaMfNaRAmfPI5-NoKOZi4pGNo2t01w&oe=62C0525B"/>
+			<img width = "100" height = "100" src= "https://dogily.vn/wp-content/uploads/2019/09/Chu-cho-Anuko-noi-tieng-tren-mang-xa-hoi.jpg"/>
 			<span class = "viet_name">Võ Thái Linh </span>
 			<div class = "viet_mssv">MSSV: 20181583</div>
 		</div>
 	</td>
 	<td class="infor_student">
 		<div class="viet">
-			<img width = "100" height = "100" src= "https://scontent.fhan3-5.fna.fbcdn.net/v/t1.15752-9/284874552_594647678480913_721527128996823808_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_ohc=PeF7jJPe_aIAX8cYOZG&_nc_ht=scontent.fhan3-5.fna&oh=03_AVLHv3KSWBzoSgpEzbTd8m3Is0esoK2c_zWOAqb_r0IKng&oe=62C364AB"/>
+			<img width = "100" height = "100" src= "https://gpquinhon.org/q/uploads/news/2018/image_9.png">
 			<span class = "viet_name">Trương Văn Huy </span>
 			<div class = "viet_mssv">MSSV: 20181540</div>
 		</div>
 	</td>
 	<td class="infor_tuan">
 		<div class="viet">
-			<img width = "100" height = "100" src= "https://scontent.fhan3-4.fna.fbcdn.net/v/t1.15752-9/273936228_665554857919122_1859267038590725076_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=Vf7YbmC-N-MAX9rtRxl&_nc_ht=scontent.fhan3-4.fna&oh=03_AVI0fyz-sKxkEPz9QrZfwWEmHRT-j77nkT_5kXA1eHQ_6g&oe=629D2821"/>
+			<img width = "100" height = "100" src= "https://thucanh.net/wp-content/uploads/2021/04/205474599_501709544470115_7446870977759463682_n.jpg"/>
 			<span class = "viet_name">Nguyễn Công Anh Tuấn </span>
 			<div class = "viet_mssv">MSSV: 20181816</div>
 		</div>
@@ -222,39 +236,78 @@
 <table style="width:100%" class="data">
   <tr>
     <td class="test">Tốc độ máy(gói/phút)</td>
+	<td class="test">@Model.DamagedPackage</td>
     <td class="test">Tốc độ máy(gói/phút)</td>
+	<td class="test">@Model.DamagedPackage</td>
     <td class="test">Tốc độ máy(gói/phút)</td>
+	<td class="test">@Model.DamagedPackage</td>
 	<td class="test">Tốc độ máy(gói/phút)</td>
+	<td class="test">@Model.DamagedPackage</td>
   </tr>
   <tr>
     <td class="test">Hiệu suất(%OEE)  </td>
+	<td class="test">@Model.DamagedPackage</td>
     <td class="test">Hiệu suất(%OEE)  </td>
+	<td class="test">@Model.DamagedPackage</td>
     <td class="test">Hiệu suất(%OEE)  </td>
+	<td class="test">@Model.DamagedPackage</td>
 	<td class="test">Hiệu suất(%OEE)  </td>
+	<td class="test">@Model.DamagedPackage</td>
+@*		<td class="test">
+		@obj.ThoiGianChapNhanGoi
+	</td>*@
   </tr>
   <tr>
     <td class="test">Sản lượng(gói)</td>
+	<td class="test">@Model.DamagedPackage</td>
     <td class="test">Sản lượng(gói) </td>
+	<td class="test">@Model.DamagedPackage</td>
     <td class="test">Sản lượng(gói)</td>
+	<td class="test">@Model.DamagedPackage</td>
 	<td class="test">Sản lượng(gói)</td>
-  </tr>
+	<td class="test">@Model.DamagedPackage</td>
+@*	<td class="test">
+		@obj.ThoiGianChapNhanGoi
+	</td> *@ 
+</tr>
   <tr>
 	<td class="test">Số gói cấn(gói)</td>
+	<td class="test">@Model.DamagedPackage</td>
 	<td class="test">Số gói cấn(gói)</td>
+	<td class="test">@Model.DamagedPackage</td>
 	<td class="test">Số gói cấn(gói)</td>
+	<td class="test">@Model.DamagedPackage</td>
 	<td class="test">Số gói cấn(gói)</td>
+	<td class="test">@Model.DamagedPackage</td>
   </tr>
+@*	<td class="test">
+		@obj.ThoiGianChapNhanGoi
+	</td>*@
   <tr>
 	<td class="test">% Cấn gia vị:</td>
+	<td class="test">@Model.TotalPackage</td>
 	<td class="test">% Cấn gia vị:</td>
+	<td class="test">@Model.TotalPackage</td>
 	<td class="test">% Cấn gia vị:</td>
+	<td class="test">@Model.TotalPackage</td>
 	<td class="test">% Cấn gia vị:</td>
+	<td class="test">@Model.TotalPackage</td>
+@*	<td class="test">
+		@obj.ThoiGianChapNhanGoi
+	</td>*@
   </tr>
 	<tr>
 	 <td class="test">Số gói rỗng(gói):</td>
+	 <td class="test">@Model.EmptyPackage</td>
 	 <td class="test">Số gói rỗng(gói):</td>
+	 <td class="test">@Model.EmptyPackage</td>
 	 <td class="test">Số gói rỗng(gói):</td>
+	 <td class="test">@Model.EmptyPackage</td>
 	 <td class="test">Số gói rỗng(gói):</td>
+	 <td class="test">@Model.EmptyPackage</td>
+@*	<td class="test">
+		@obj.ThoiGianChapNhanGoi
+	</td>*@
 	</tr>
 </table>
 

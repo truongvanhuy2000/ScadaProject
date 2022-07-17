@@ -10225,19 +10225,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lenovo\\.nuget\\packages\\": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\ScadaProject.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\My Git\\scada_newest\\ScadaProject\\ScadaProject.csproj",
       "projectName": "ScadaProject",
-      "projectPath": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\ScadaProject.csproj",
-      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\WindowApp\\WebApplicationTest\\ScadaProject\\obj\\",
+      "projectPath": "C:\\Users\\admin\\Desktop\\My Git\\scada_newest\\ScadaProject\\ScadaProject.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\My Git\\scada_newest\\ScadaProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10324,7 +10324,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   },

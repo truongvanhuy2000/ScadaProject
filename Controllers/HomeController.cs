@@ -17,14 +17,182 @@ namespace ScadaProject.Controllers
             _logger = logger;
             _db = db;
         }
+
+        [HttpPost]
+        public IActionResult SetKip1(SettingCaSanXuat acc)
+        {
+            if (acc.TimeStarMinute > 60 || acc.TimeStartHour > 24 || acc.TimeStartHour < 0 || acc.TimeStarMinute < 0)
+            {
+                TempData["Setting SanXuat Error"] = "Setting SanXuat Error";
+                return RedirectToAction("InforSettingCaSanXuat");
+            }
+            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
+            var obj = _db.SettingCaSanXuats.Find(1);
+            if (obj == null)
+            {
+                acc.Id = 1;
+                _db.SettingCaSanXuats.Add(acc);
+                _db.SaveChanges();
+
+                return RedirectToAction("InforSettingCaSanXuat");
+            }
+            _db.SettingCaSanXuats.Remove(obj);
+            _db.SaveChanges();
+            acc.Id = 1;
+            _db.SettingCaSanXuats.Add(acc);
+            _db.SaveChanges();
+
+            return RedirectToAction("InforSettingCaSanXuat");
+        }
+
+        [HttpPost]
+        public IActionResult SetKip2(SettingCaSanXuat acc)
+        {
+            if (acc.TimeStarMinute > 60 || acc.TimeStartHour > 24 || acc.TimeStartHour < 0 || acc.TimeStarMinute < 0)
+            {
+                TempData["Setting SanXuat Error"] = "Setting SanXuat Error";
+                return RedirectToAction("InforSettingCaSanXuat");
+            }
+            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
+            var obj = _db.SettingCaSanXuats.Find(2);
+            if (obj == null)
+            {
+                acc.Id = 2;
+                _db.SettingCaSanXuats.Add(acc);
+                _db.SaveChanges();
+
+                return RedirectToAction("InforSettingCaSanXuat");
+            }
+            _db.SettingCaSanXuats.Remove(obj);
+            _db.SaveChanges();
+            acc.Id = 2;
+            _db.SettingCaSanXuats.Add(acc);
+            _db.SaveChanges();
+
+            return RedirectToAction("InforSettingCaSanXuat");
+        }
+
+        public IActionResult InforSettingCaSanXuat()
+        {
+            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
+            return View(objCategoryList);
+        }
+
+        [HttpPost]
+        public IActionResult SetKip3(SettingCaSanXuat acc)
+        {
+            if (acc.TimeStarMinute > 60 || acc.TimeStartHour > 24 || acc.TimeStartHour < 0 || acc.TimeStarMinute < 0)
+            {
+                TempData["Setting SanXuat Error"] = "Setting SanXuat Error";
+                return RedirectToAction("InforSettingCaSanXuat");
+            }
+
+            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
+            var obj = _db.SettingCaSanXuats.Find(3);
+            if (obj == null)
+            {
+                acc.Id = 3;
+                _db.SettingCaSanXuats.Add(acc);
+                _db.SaveChanges();
+
+                return RedirectToAction("InforSettingCaSanXuat");
+            }
+            _db.SettingCaSanXuats.Remove(obj);
+            _db.SaveChanges();
+            acc.Id = 3;
+            _db.SettingCaSanXuats.Add(acc);
+            _db.SaveChanges();
+
+            return RedirectToAction("InforSettingCaSanXuat");
+        }
+
         public IActionResult Index()
         {
-            return View();
+            float _totalPacket = 0;
+            float _damagePacket = 0;
+            float _emptyPacket = 0;
+            float check = 0;
+            IEnumerable<Product> Setting = _db.Products.ToList();
+            foreach (var product in Setting)
+            {
+                _totalPacket = _totalPacket + product.TotalPackage;
+                _damagePacket = _damagePacket + product.DamagedPackage;
+                _emptyPacket = _emptyPacket + product.EmptyPackage;
+                check++;
+            }
+
+            //_totalPacket /= check;
+            //_emptyPacket /= check;
+            //_damagePacket /= check;
+
+            var message = new Product();
+            
+            message.TotalPackage = Setting.First().TotalPackage;
+            message.EmptyPackage = Setting.First().EmptyPackage;
+            message.DamagedPackage = Setting.First().DamagedPackage;
+            return View(message);
         }
 
         public IActionResult SettingPLC()
         {
             return View();
+        }
+
+        public IActionResult DeleteTruongCa(int? id)
+        {
+            if (id == null)
+            {
+                return Error();
+            }
+            var obj = _db.SetGeneralInformations.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.SetGeneralInformations.Remove(obj);
+            _db.SaveChanges();
+            TempData["Delete Success"] = "Deleted Sucessfully";
+            return RedirectToAction("InforSettingCaSanXuat");
+        }
+
+        public IActionResult DeleteSettingKip(int? id)
+        {
+            if (id == null)
+            {
+                return Error();
+            }
+            var obj = _db.SettingCaSanXuats.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.SettingCaSanXuats.Remove(obj);
+            _db.SaveChanges();
+            TempData["Delete Success"] = "Deleted Sucessfully";
+            return RedirectToAction("InforSettingCaSanXuat");
+        }
+
+        [HttpPost]
+        public IActionResult AddInfor(SetGeneralInformation acc)
+        {
+            int IdProcduct = 1;
+            IEnumerable<SetGeneralInformation> objCategoryList = _db.SetGeneralInformations.ToList();
+            foreach (var item in objCategoryList)
+            {
+                if (item.NameTruongCa == acc.NameTruongCa)
+                {
+                    TempData["Register Error"] = "Username has been used, Register failed";
+                    return RedirectToAction("GeneralInformation");
+                }
+            }
+
+            IdProcduct = objCategoryList.Count() + 1;
+
+        Next:  acc.Id = IdProcduct;
+            _db.SetGeneralInformations.Add(acc);
+            _db.SaveChanges();
+            TempData["Register Success"] = "Account created successfully";
+            return RedirectToAction("GeneralInformation");
         }
 
         public IActionResult UserManagement()
@@ -38,25 +206,57 @@ namespace ScadaProject.Controllers
             return RedirectToAction("login", "Account");
         }
         [HienTruongCheck]
-        public IActionResult SetGeneralInformation()
+
+
+        public IActionResult GeneralInformation()
         {
-            return View();
+            IEnumerable<SetGeneralInformation> Setting = _db.SetGeneralInformations.ToList();
+            return View(Setting);
         }
         [HienTruongCheck]
         public IActionResult SettingSanXuat()
         {
-            IEnumerable<SettingCaSanXuat> Setting = _db.SettingCaSanXuats.ToList();
-            return View(Setting);
+            //IEnumerable<SettingCaSanXuat> Setting = _db.SettingCaSanXuats.ToList();
+            return View();
         }
-        [AdminCheck]
+
+        public IActionResult UpdateInformation()
+        {
+            return View();
+        }
+
+
+
         public IActionResult Register()
         {
             return View();
         }
+
+        
+        [HttpPost]
+        public IActionResult SettingPLCDuMaMay(SettingPLC acc)
+        {
+            IEnumerable<SettingPLC> objCategoryList = _db.SettingPLCs.ToList();
+            var obj = _db.SettingPLCs.Find(1);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.SettingPLCs.Remove(obj);
+            _db.SaveChanges();
+            acc.Id = 1;
+            _db.SettingPLCs.Add(acc);
+            _db.SaveChanges();
+            
+            return RedirectToAction("Index");
+        }
+
+       
         [HttpPost]
         public IActionResult Register(Account acc)
         {
             IEnumerable<Account> objCategoryList = _db.Accounts.ToList();
+
             if (ModelState.IsValid)
             {
                 foreach(var item in objCategoryList)

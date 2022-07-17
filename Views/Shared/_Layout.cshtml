@@ -70,9 +70,9 @@
                 @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Hien Truong")
                 {
                     <li>
-                        <a asp-controller="Home" asp-action="SetGeneralInformation">
+                        <a asp-controller="Home" asp-action="GeneralInformation">
                             <i class="fas fa-image"></i>
-                            Cài đặt thông tin chung
+                            Thông tin chung
                         </a>
                     </li>
                     <li>
@@ -90,17 +90,32 @@
                     </li>
                 }
 
+ 
+
+           
+                
                 @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat")
                 {
 
-                <li>
-                    <a asp-controller="Home" asp-action="ProductReport">
-                        <i class="fas fa-image"></i>
-                        Báo cáo hiện trường
-                    </a>
-                </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="UpdateInformation">
+                            <i class="fas fa-image"></i>
+                            Cài đặt thông tin chung
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Home" asp-action="ProductReport">
+                            <i class="fas fa-image"></i>
+                            Báo cáo hiện trường
+                        </a>
+                    </li>
 
                 }
+
+
+
+                
 
             </ul>
 

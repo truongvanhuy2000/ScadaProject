@@ -14,5 +14,8 @@ namespace ScadaProject.Data
             public DbSet<ass> Ass { get; set; }
 
             public DbSet<SettingCaSanXuat> SettingCaSanXuats { get; set; }
+            public DbSet<SettingPLC> SettingPLCs { get; set; }
+
+            public DbSet<SetGeneralInformation> SetGeneralInformations { get; set; }
     }
 }

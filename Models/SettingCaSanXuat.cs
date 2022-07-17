@@ -15,8 +15,6 @@ namespace ScadaProject.Models
         [MaxLength(10)]
         public string NameTruongCa { get; set; }
 
-        [Required]
-        public int SoCa { get; set; }
     }
 }
 

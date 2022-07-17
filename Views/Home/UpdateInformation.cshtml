@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Set Information";
+}
+
+@model SetGeneralInformation
+@Html.AntiForgeryToken()
+
+<link rel="stylesheet" href="~/css/ContactForm.css" asp-append-version="true">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+	.whole_page{
+        font-family: 'Roboto';
+	}
+	
+	.title{
+		font-size: 50px;
+		background-color: #F0F8FF;
+		position: relative;
+		left: 35px;
+	}
+
+	td.test{
+		position: relative;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+        text-align: left;
+		font-family: 'Roboto';
+		font-size: 18px;
+		font-weight: 600;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		text-align: right;
+	}
+	
+	table.data{
+		position: relative;
+		top: 25px;
+        border-collapse: collapse;
+		cursor:pointer;
+        width: 100%;
+	}
+
+	.form_input {
+		position: relative;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+        text-align: left;
+		font-family: 'Roboto';
+		font-size: 18px;
+		font-weight: 600;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		left: 38px;
+	}
+
+	.truong_ca{
+    	margin-left: 8px;
+    }
+	
+	.botton_save{
+		background-color: #228B22;
+		color: white;
+		font-size: 20px;
+		padding-top: 9px;
+		padding-bottom: 9px;
+		padding-left: 25px;
+		padding-right: 25px;
+		margin-top: 8px;
+		border-color: white;
+		margin-left: 38px;
+	}
+</style>
+
+
+<h1 class="title">Cài đặt thông số PLC</h1>
+<div class="container">
+
+    
+    
+ <form asp-controller="Home" asp-action="AddInfor" method="post">
+
+    <label class="text-inf" for="FullName">Tên trưởng ca</label>
+    <span asp-validation-for="NameTruongCa" class="text-danger"></span>
+    <input type="text" asp-for="NameTruongCa" placeholder="Tên trưởng ca..">
+    
+
+    <label class="text-inf" for="UserName">Tên sản phẩm</label>
+    <span asp-validation-for="NameProduct" class="text-danger"></span>
+    <input type="text" asp-for="NameProduct" placeholder="Tên sản phẩm..">
+
+	<input class = "button-inf" type="submit" value="Submit">
+</form>
+</div>
+
+
