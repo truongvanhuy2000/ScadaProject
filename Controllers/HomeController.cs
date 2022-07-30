@@ -126,7 +126,7 @@ namespace ScadaProject.Controllers
             //_damagePacket /= check;
 
             var message = new Product();
-            
+
             message.TotalPackage = Setting.First().TotalPackage;
             message.EmptyPackage = Setting.First().EmptyPackage;
             message.DamagedPackage = Setting.First().DamagedPackage;
@@ -188,7 +188,8 @@ namespace ScadaProject.Controllers
 
             IdProcduct = objCategoryList.Count() + 1;
 
-        Next:  acc.Id = IdProcduct;
+        Next: 
+            acc.Id = IdProcduct;
             _db.SetGeneralInformations.Add(acc);
             _db.SaveChanges();
             TempData["Register Success"] = "Account created successfully";
@@ -318,7 +319,7 @@ namespace ScadaProject.Controllers
             int number = rand.Next(min, max); //returns random number between 0-99
             return number;
         }
-        public DateTime GenerateRandomDates()
+        public String GenerateRandomDates()
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());
 
@@ -326,15 +327,15 @@ namespace ScadaProject.Controllers
             var month = rnd.Next(1, 13);
             var days = rnd.Next(1, DateTime.DaysInMonth(year, month) + 1);
 
-            return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000));
+            return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000)).ToString();
         }
         public void createRandom()
         {
             for (int i = 0; i < 50; i++)
             {
                 Product obj = new Product();
-                obj.ProductName = RandomProductName();
                 obj.CreatedDateTime = GenerateRandomDates();
+                obj.ProductName = RandomProductName();
                 obj.ProductionLine = RandomNumber(1, 10);
                 obj.TotalPackage = RandomNumber(50, 100);
                 obj.MachineNumber = RandomNumber(1, 5);
@@ -356,6 +357,40 @@ namespace ScadaProject.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult ShowGraph()
+        {
+            IEnumerable<Product> objCategoryList = _db.Products.ToList();
+            List<String> ProductList = new List<String>();
+            List<ProductSummary> ProductSummaryList = new List<ProductSummary>();
+            foreach (var Product in objCategoryList)
+            {
+                if (ProductList.Count == 0)
+                {
+                    ProductList.Add(Product.ProductName);
+                }
+                if(ProductList.Contains(Product.ProductName))
+                {
+                    continue;
+                }
+                ProductList.Add(Product.ProductName);
+            }
+            foreach (var Product in ProductList)
+            {
+                int sum = 0;
+                var tempProduct = new ProductSummary();
+                tempProduct.ProductName = Product;
+                foreach (var item in objCategoryList)
+                {
+                    if(item.ProductName == Product)
+                    {
+                        sum += item.TotalPackage;
+                    }
+                }
+                tempProduct.Amounts = sum;
+                ProductSummaryList.Add(tempProduct);
+            }
+           return View(ProductSummaryList);
         }
     }
 }

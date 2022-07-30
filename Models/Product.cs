@@ -25,6 +25,6 @@ namespace ScadaProject.Models
         public int DamagedPackage { get; set; }
         [DisplayName("Empty Packages: ")]
         public int EmptyPackage { get; set; }
-        public DateTime CreatedDateTime { get; set; }
+        public String CreatedDateTime { get; set; }
     }
 }

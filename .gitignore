@@ -1,1 +1,3 @@
-/ScadaProject/bin/Debug
+bin/
+.vs/
+obj/

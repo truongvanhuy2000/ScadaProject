@@ -96,8 +96,9 @@ namespace ScadaProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("CreatedDateTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DamagedPackage")
                         .HasColumnType("int");
@@ -126,6 +127,27 @@ namespace ScadaProject.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("ScadaProject.Models.SetGeneralInformation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("NameProduct")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameTruongCa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SetGeneralInformations");
+                });
+
             modelBuilder.Entity("ScadaProject.Models.SettingCaSanXuat", b =>
                 {
                     b.Property<int>("Id")
@@ -148,6 +170,40 @@ namespace ScadaProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SettingCaSanXuats");
+                });
+
+            modelBuilder.Entity("ScadaProject.Models.SettingPLC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ThoiGianCapNhap")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThoiGianChapNhanGoi")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThoiGianDayGoi")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThoiGianDayGoiCan")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThoiGianTinhDungMay")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThoiGianTinhGoiCan")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TocDoChuan")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SettingPLCs");
                 });
 #pragma warning restore 612, 618
         }

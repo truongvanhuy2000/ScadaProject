@@ -105,10 +105,24 @@
                     </li>
 
                     <li>
-                        <a asp-controller="Home" asp-action="ProductReport">
-                            <i class="fas fa-image"></i>
-                            Báo cáo hiện trường
+                        <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
+                            <i class="fas fa-user"></i>
+                            Quản Lí
                         </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu2">
+                            <li>
+                                <a asp-controller="Home" asp-action="ProductReport">
+                                    <i class="fas fa-image"></i>
+                                    Báo cáo hiện trường
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="ShowGraph">
+                                    <i class="fas fa-image"></i>
+                                    Biểu đồ
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                 }
