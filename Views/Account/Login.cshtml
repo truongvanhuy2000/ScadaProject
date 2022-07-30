@@ -41,10 +41,10 @@
 }
                 <form action="" class="the-form" method="post">
 
-                    <label for="Username">Username</label>
+                    <label for="Username">Tên đăng nhập</label>
                     <input type="text" name="Username" id="Username" placeholder="Enter your username">
 
-                    <label for="Password">Password</label>
+                    <label for="Password">Mật khẩu</label>
                     <input type="password" name="Password" id="Password" placeholder="Enter your password">
 
                     <input type="submit" asp-controller="Account" asp-action="Login" value="Log In">
@@ -52,13 +52,6 @@
                 </form>
 
             </div><!-- FORM BODY-->
-
-            <div class="form-footer">
-                <div>
-                    <span>Don't have an account?</span> <a asp-controller="Account" asp-action="RegisterAccount">Sign Up</a>
-                </div>
-            </div><!-- FORM FOOTER -->
-
         </div><!-- FORM CONTAINER -->
     </div>
 

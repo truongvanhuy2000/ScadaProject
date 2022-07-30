@@ -61,7 +61,7 @@
                         @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin")
                         {
                             <li>
-                            <a asp-controller="Home" asp-action="Register"><i class="fa fa-plus-circle"></i> Đăng Ký</a>
+                                <a asp-controller="Home" asp-action="Register"><i class="fa fa-plus-circle"></i> Đăng Ký</a>
                             </li>
                         }
                         
@@ -89,14 +89,8 @@
                         </a>
                     </li>
                 }
-
- 
-
-           
-                
                 @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat")
                 {
-
                     <li>
                         <a asp-controller="Home" asp-action="UpdateInformation">
                             <i class="fas fa-image"></i>
@@ -107,13 +101,13 @@
                     <li>
                         <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
                             <i class="fas fa-user"></i>
-                            Quản Lí
+                            Hiện trường
                         </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu2">
                             <li>
                                 <a asp-controller="Home" asp-action="ProductReport">
                                     <i class="fas fa-image"></i>
-                                    Báo cáo hiện trường
+                                    Báo cáo
                                 </a>
                             </li>
                             <li>
@@ -124,22 +118,7 @@
                             </li>
                         </ul>
                     </li>
-
                 }
-
-
-
-                
-
-            </ul>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
             </ul>
         </nav>
     <div id="content">

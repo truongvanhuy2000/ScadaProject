@@ -16,41 +16,41 @@
 
   <form asp-controller="Home" asp-action="Register" method="post">
 
-    <label for="FullName">Full Name</label>
+    <label for="FullName">Họ tên</label>
     <span asp-validation-for="FullName" class="text-danger"></span>
-    <input asp-for="FullName" placeholder="Your name..">
+    <input asp-for="FullName">
     
 
-    <label for="UserName">Username</label>
+    <label for="UserName">Tên đăng nhập</label>
     <span asp-validation-for="UserName" class="text-danger"></span>
-    <input asp-for="UserName" placeholder="Your User Name..">
+    <input asp-for="UserName">
     
     
-    <label for="Password">Password</label>
+    <label for="Password">Mật khẩu</label>
     <span asp-validation-for="Password" class="text-danger"></span>
     <input asp-for="Password" class="key" type="text" autocomplete="off"/>
     
 
-    <label for="Phone">Phone Number</label>
+    <label for="Phone">Số điện thoại</label>
      <span asp-validation-for="Phone" class="text-danger"></span>
-    <input asp-for="Phone" placeholder="Your Phone Number..">
+    <input asp-for="Phone">
    
 
     <label for="Email">Email</label>
     <span asp-validation-for="Email" class="text-danger"></span>
-    <input asp-for="Email" placeholder="Your Email..">
+    <input asp-for="Email">
     
 
-    <label for="Gender">Gender</label>
+    <label for="Gender">Giới tính</label>
     <select asp-for="Gender" name="gender">
       <option value="male" >Male</option>
       <option value="female">Female</option>
     </select>
 
-    <label for="NhiemVu">Nhiem Vu</label>
+    <label for="NhiemVu">Nhiệm vụ</label>
     <select asp-for="NhiemVu" name="nhiemvu">
-      <option value="Giam Sat" >Giam Sat</option>
-      <option value="Hien Truong">Hien Truong</option>
+      <option value="Giam Sat" >Giám sát</option>
+      <option value="Hien Truong">Hiện trường</option>
     </select>
 
     <input type="submit" value="Submit">

@@ -12,6 +12,10 @@ namespace ScadaProject.Models
         public String ProductName { get; set; }
 
         [Required]
-        public int Amounts { get; set; }
+        public int TotalAmounts { get; set; }
+        [Required]
+        public int TotalDamaged { get; set; }
+        [Required]
+        public int TotalEmpry { get; set; }
     }
 }

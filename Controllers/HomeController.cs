@@ -17,7 +17,97 @@ namespace ScadaProject.Controllers
             _logger = logger;
             _db = db;
         }
+        //Home Page && Index-------------------------------------------------------------
+        public IActionResult Index()
+        {
+            float _totalPacket = 0;
+            float _damagePacket = 0;
+            float _emptyPacket = 0;
+            float check = 0;
+            IEnumerable<Product> Setting = _db.Products.ToList();
+            foreach (var product in Setting)
+            {
+                _totalPacket = _totalPacket + product.TotalPackage;
+                _damagePacket = _damagePacket + product.DamagedPackage;
+                _emptyPacket = _emptyPacket + product.EmptyPackage;
+                check++;
+            }
 
+            //_totalPacket /= check;
+            //_emptyPacket /= check;
+            //_damagePacket /= check;
+
+            var message = new Product();
+
+            message.TotalPackage = Setting.First().TotalPackage;
+            message.EmptyPackage = Setting.First().EmptyPackage;
+            message.DamagedPackage = Setting.First().DamagedPackage;
+            return View(message);
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("login", "Account");
+        }
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        //Home Page && Index-------------------------------------------------------------
+
+        //Register && UserManagement------------------------------------------------------------------------------------------------
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult UserManagement()
+        {
+            IEnumerable<Account> objCategoryList = _db.Accounts.ToList();
+            return View(objCategoryList);
+        }
+
+        [HttpPost]
+        public IActionResult Register(Account acc)
+        {
+            IEnumerable<Account> objCategoryList = _db.Accounts.ToList();
+
+            if (ModelState.IsValid)
+            {
+                foreach (var item in objCategoryList)
+                {
+                    if (item.UserName == acc.UserName)
+                    {
+                        TempData["Register Error"] = "Username has been used";
+                        return RedirectToAction("Register");
+                    }
+                    _db.Accounts.Add(acc);
+                    _db.SaveChanges();
+                    TempData["Register Success"] = "Account created successfully";
+                    return RedirectToAction("UserManagement");
+                }
+            }
+            return View();
+        }
+        [AdminCheck]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return Error();
+            }
+            var obj = _db.Accounts.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.Accounts.Remove(obj);
+            _db.SaveChanges();
+            TempData["Delete Success"] = "Deleted Sucessfully";
+            return RedirectToAction("UserManagement");
+        }
+        //Register && UserManagement------------------------------------------------------------------------------------------------
+
+        //Setting Kip------------------------------------------------------------------------------------------------
         [HttpPost]
         public IActionResult SetKip1(SettingCaSanXuat acc)
         {
@@ -44,7 +134,6 @@ namespace ScadaProject.Controllers
 
             return RedirectToAction("InforSettingCaSanXuat");
         }
-
         [HttpPost]
         public IActionResult SetKip2(SettingCaSanXuat acc)
         {
@@ -71,13 +160,6 @@ namespace ScadaProject.Controllers
 
             return RedirectToAction("InforSettingCaSanXuat");
         }
-
-        public IActionResult InforSettingCaSanXuat()
-        {
-            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
-            return View(objCategoryList);
-        }
-
         [HttpPost]
         public IActionResult SetKip3(SettingCaSanXuat acc)
         {
@@ -105,39 +187,20 @@ namespace ScadaProject.Controllers
 
             return RedirectToAction("InforSettingCaSanXuat");
         }
+        //Setting Kip------------------------------------------------------------------------------------------------
 
-        public IActionResult Index()
+        // ??????? View not found
+        public IActionResult InforSettingCaSanXuat()
         {
-            float _totalPacket = 0;
-            float _damagePacket = 0;
-            float _emptyPacket = 0;
-            float check = 0;
-            IEnumerable<Product> Setting = _db.Products.ToList();
-            foreach (var product in Setting)
-            {
-                _totalPacket = _totalPacket + product.TotalPackage;
-                _damagePacket = _damagePacket + product.DamagedPackage;
-                _emptyPacket = _emptyPacket + product.EmptyPackage;
-                check++;
-            }
-
-            //_totalPacket /= check;
-            //_emptyPacket /= check;
-            //_damagePacket /= check;
-
-            var message = new Product();
-
-            message.TotalPackage = Setting.First().TotalPackage;
-            message.EmptyPackage = Setting.First().EmptyPackage;
-            message.DamagedPackage = Setting.First().DamagedPackage;
-            return View(message);
+            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
+            return View(objCategoryList);
         }
-
+        
+        
         public IActionResult SettingPLC()
         {
             return View();
         }
-
         public IActionResult DeleteTruongCa(int? id)
         {
             if (id == null)
@@ -196,19 +259,7 @@ namespace ScadaProject.Controllers
             return RedirectToAction("GeneralInformation");
         }
 
-        public IActionResult UserManagement()
-        {
-            IEnumerable<Account> objCategoryList = _db.Accounts.ToList();
-            return View(objCategoryList);
-        }
-        public IActionResult Logout()
-        {
-            HttpContext.Session.Clear();
-            return RedirectToAction("login", "Account");
-        }
         [HienTruongCheck]
-
-
         public IActionResult GeneralInformation()
         {
             IEnumerable<SetGeneralInformation> Setting = _db.SetGeneralInformations.ToList();
@@ -225,15 +276,7 @@ namespace ScadaProject.Controllers
         {
             return View();
         }
-
-
-
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        
+ 
         [HttpPost]
         public IActionResult SettingPLCDuMaMay(SettingPLC acc)
         {
@@ -252,100 +295,62 @@ namespace ScadaProject.Controllers
             return RedirectToAction("Index");
         }
 
-       
-        [HttpPost]
-        public IActionResult Register(Account acc)
-        {
-            IEnumerable<Account> objCategoryList = _db.Accounts.ToList();
+        //ProductReport && ShowGraph---------------------------------------------------------------------
 
-            if (ModelState.IsValid)
-            {
-                foreach(var item in objCategoryList)
-                {
-                    if(item.UserName == acc.UserName)
-                    {
-                        TempData["Register Error"] = "Username has been used";
-                        return RedirectToAction("Register");
-                    }
-                    _db.Accounts.Add(acc);
-                    _db.SaveChanges();
-                    TempData["Register Success"] = "Account created successfully";
-                    return RedirectToAction("UserManagement");
-                }
-            }
-            return View();
-        }
-        [AdminCheck]
-        public IActionResult Delete(int? id)
-        {
-            if(id == null)
-            {
-                return Error();
-            }
-            var obj = _db.Accounts.Find(id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            _db.Accounts.Remove(obj);
-            _db.SaveChanges();
-            TempData["Delete Success"] = "Deleted Sucessfully";
-            return RedirectToAction("UserManagement");
-        }
-        public string RandomProductName()
-        {
-            Random rand = new Random();
-            int number = rand.Next(0, 5); //returns random number between 0-99
-            switch (number)
-            {
-                case 0:
-                    return "Gạo";
-                case 1:
-                    return "Bột Canh";
-                case 2:
-                    return "Lúa";
-                case 3:
-                    return "Bột Mỳ";
-                case 4:
-                    return "Hạt Tiêu";
-                case 5:
-                    return "Mỳ Tôm";
-            }
-            return null;
-        }
-        public int RandomNumber(int min, int max)
-        {
-            Random rand = new Random();
-            int number = rand.Next(min, max); //returns random number between 0-99
-            return number;
-        }
-        public String GenerateRandomDates()
-        {
-            var rnd = new Random(Guid.NewGuid().GetHashCode());
+        //public string RandomProductName()
+        //{
+        //    Random rand = new Random();
+        //    int number = rand.Next(0, 5); //returns random number between 0-99
+        //    switch (number)
+        //    {
+        //        case 0:
+        //            return "Gạo";
+        //        case 1:
+        //            return "Bột Canh";
+        //        case 2:
+        //            return "Lúa";
+        //        case 3:
+        //            return "Bột Mỳ";
+        //        case 4:
+        //            return "Hạt Tiêu";
+        //        case 5:
+        //            return "Mỳ Tôm";
+        //    }
+        //    return null;
+        //}
+        //public int RandomNumber(int min, int max)
+        //{
+        //    Random rand = new Random();
+        //    int number = rand.Next(min, max); //returns random number between 0-99
+        //    return number;
+        //}
+        //public String GenerateRandomDates()
+        //{
+        //    var rnd = new Random(Guid.NewGuid().GetHashCode());
 
-            var year = rnd.Next(1995, 2021);
-            var month = rnd.Next(1, 13);
-            var days = rnd.Next(1, DateTime.DaysInMonth(year, month) + 1);
+        //    var year = rnd.Next(1995, 2021);
+        //    var month = rnd.Next(1, 13);
+        //    var days = rnd.Next(1, DateTime.DaysInMonth(year, month) + 1);
 
-            return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000)).ToString();
-        }
-        public void createRandom()
-        {
-            for (int i = 0; i < 50; i++)
-            {
-                Product obj = new Product();
-                obj.CreatedDateTime = GenerateRandomDates();
-                obj.ProductName = RandomProductName();
-                obj.ProductionLine = RandomNumber(1, 10);
-                obj.TotalPackage = RandomNumber(50, 100);
-                obj.MachineNumber = RandomNumber(1, 5);
-                obj.ProductionShift = RandomNumber(1, 4);
-                obj.DamagedPackage = RandomNumber(0, 30);
-                obj.EmptyPackage = RandomNumber(0, 30);
-                _db.Products.Add(obj);
-                _db.SaveChanges();
-            }
-        }
+        //    return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000)).ToString();
+        //}
+        //public void createRandom()
+        //{
+        //    for (int i = 0; i < 50; i++)
+        //    {
+        //        Product obj = new Product();
+        //        obj.CreatedDateTime = GenerateRandomDates();
+        //        obj.ProductName = RandomProductName();
+        //        obj.ProductionLine = RandomNumber(1, 10);
+        //        obj.TotalPackage = RandomNumber(50, 100);
+        //        obj.MachineNumber = RandomNumber(1, 5);
+        //        obj.ProductionShift = RandomNumber(1, 4);
+        //        obj.DamagedPackage = RandomNumber(0, 30);
+        //        obj.EmptyPackage = RandomNumber(0, 30);
+        //        _db.Products.Add(obj);
+        //        _db.SaveChanges();
+        //    }
+        //}
         [GiamSatCheck]
         public IActionResult ProductReport()
         {
@@ -354,10 +359,6 @@ namespace ScadaProject.Controllers
             return View(objCategoryList);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
         public IActionResult ShowGraph()
         {
             IEnumerable<Product> objCategoryList = _db.Products.ToList();
@@ -377,20 +378,27 @@ namespace ScadaProject.Controllers
             }
             foreach (var Product in ProductList)
             {
-                int sum = 0;
+                int sum1 = 0;
+                int sum2 = 0;
+                int sum3 = 0;
                 var tempProduct = new ProductSummary();
                 tempProduct.ProductName = Product;
                 foreach (var item in objCategoryList)
                 {
                     if(item.ProductName == Product)
                     {
-                        sum += item.TotalPackage;
+                        sum1 += item.TotalPackage;
+                        sum2 += item.DamagedPackage;
+                        sum3 += item.EmptyPackage;
                     }
                 }
-                tempProduct.Amounts = sum;
+                tempProduct.TotalAmounts = sum1;
+                tempProduct.TotalDamaged = sum2;
+                tempProduct.TotalEmpry = sum3;
                 ProductSummaryList.Add(tempProduct);
             }
            return View(ProductSummaryList);
         }
+        //ProductReport && ShowGraph---------------------------------------------------------------------
     }
 }

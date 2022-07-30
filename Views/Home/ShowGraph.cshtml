@@ -10,41 +10,122 @@
 <!DOCTYPE html>
 <h1>Đồ thị</h1>
 
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript" >
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var dat =[["Element", "Density", { role: "style" } ]];
-        @foreach (var r in Model)
-        {
-            Random ran = new Random();
-            var BackColor = Color.FromArgb(ran.Next(255), ran.Next(255), ran.Next(255));
-        String color = BackColor.Name.Remove(0, 2);
-        color = "#" + color; 
-        @:dat.push([ "@Html.Raw(r.ProductName)", @r.Amounts, "@color"]);
-        }
-      var data = google.visualization.arrayToDataTable(dat);
+<html>
+      <head>
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
 
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
+          // Load the Visualization API and the piechart package.
+          google.load('visualization', '1.0', {'packages':['corechart']});
 
-      var options = {
-        title: "Số lượng sản phẩm",
-        width: 600,
-        height: 400,
-        bar: {groupWidth: "95%"},
-        legend: { position: "none" },
-      };
-      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-      chart.draw(view, options);
-  }
-  </script>
-<div id="columnchart_values" style="width: 1800px; height: 1800px;"></div>
+          // Set a callback to run when the Google Visualization API is loaded.
+          google.setOnLoadCallback(drawChart);
 
-           
+          // Callback that creates and populates a data table,
+          // instantiates the pie chart, passes in the data and
+          // draws it.
+          function drawChart() {
+
+            // Create the data table1.
+            var dat =[["SanPham", "SoLuong", { role: "style" } ]];
+                @foreach (var r in Model)
+                {
+                    Random ran = new Random();
+                    var BackColor = Color.FromArgb(ran.Next(255), ran.Next(255), ran.Next(255));
+                    String color = BackColor.Name.Remove(0, 2);
+                    color = "#" + color; 
+                    @:dat.push([ "@Html.Raw(r.ProductName)", @r.TotalAmounts, "@color"]);
+                }
+              var data = google.visualization.arrayToDataTable(dat);
+              var view = new google.visualization.DataView(data);
+              view.setColumns([0, 1,
+                               { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                               2]);
+
+              
+            // Create the data table2.
+            var dat2 =[["SanPham", "SoLuong", { role: "style" } ]];
+                @foreach (var r in Model)
+                {
+                    Random ran = new Random();
+                    var BackColor = Color.FromArgb(ran.Next(255), ran.Next(255), ran.Next(255));
+                    String color = BackColor.Name.Remove(0, 2);
+                    color = "#" + color; 
+                    @:dat2.push([ "@Html.Raw(r.ProductName)", @r.TotalDamaged, "@color"]);
+                }
+              var data2 = google.visualization.arrayToDataTable(dat2);
+              var view2 = new google.visualization.DataView(data2);
+              view2.setColumns([0, 1,
+                               { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                               2]);
+
+            // Create the data table3.
+            var dat3 =[["SanPham", "SoLuong", { role: "style" } ]];
+                @foreach (var r in Model)
+                {
+                    Random ran = new Random();
+                    var BackColor = Color.FromArgb(ran.Next(255), ran.Next(255), ran.Next(255));
+                    String color = BackColor.Name.Remove(0, 2);
+                    color = "#" + color; 
+                    @:dat3.push([ "@Html.Raw(r.ProductName)", @r.TotalEmpry, "@color"]);
+                }
+              var data3 = google.visualization.arrayToDataTable(dat3);
+              var view3 = new google.visualization.DataView(data3);
+              view3.setColumns([0, 1,
+                               { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                               2]);
+
+            // Set chart options
+            var options = {
+                title: "Tổng số lượng sản phẩm",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+              };
+            // Set chart options
+            var options2 = {
+                title: "Số sản phẩm hỏng",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+              };
+            // Set chart options
+            var options3 = {
+                title: "Số sản phẩm rỗng",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+              };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+            var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+            chart2.draw(data2, options2);
+            var chart3 = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+            chart3.draw(data3, options3);
+
+          }
+        </script>
+      </head>
+
+      <body>
+        <!--Divs that will hold the charts-->
+        <div id="chart_div"></div>
+        <div id="chart_div2"></div>
+        <div id="chart_div3"></div>
+      </body>
+    </html>
