@@ -195,8 +195,7 @@ namespace ScadaProject.Controllers
             IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
             return View(objCategoryList);
         }
-        
-        
+
         public IActionResult SettingPLC()
         {
             return View();
