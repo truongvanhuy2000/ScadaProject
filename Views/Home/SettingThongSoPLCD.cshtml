@@ -7,7 +7,7 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
-<h1>Danh Sách Người Dùng</h1>
+<h1>Thông số PLC</h1>
 @if(TempData["Register PLC Success"] != null) 
 {
 		<div id="popupdiv" style="border: 1px solid green;">
@@ -24,18 +24,20 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<title>Bootstrap basic table example</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
 <body>
-<div class="container ">
-<table class="table table-bordered table-striped table-hover">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#example').DataTable({
+});
+});
+</script>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
-  <tr>
+        <tr>
       <th>Dây Chuyền</th>
       <th>Tốc độ chuẩn(gói/phút)</th>
       <th>Thời gian tính dừng máy(x0.1s)</th>
@@ -77,9 +79,8 @@
                 </td>
             </tr>
         }
-    </tbody>    
+    </tbody>
 </table>
-</div><br /><br />
-
 </body>
 </html>
+

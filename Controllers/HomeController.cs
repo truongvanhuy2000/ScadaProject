@@ -349,7 +349,7 @@ namespace ScadaProject.Controllers
 
 
             TempData["Register PLC Success"] = "Register Sucessfully";
-
+            Response.Headers.Add("Refresh", "60");
             return View(objCategoryList);
         }
 
@@ -414,6 +414,7 @@ namespace ScadaProject.Controllers
         {
             //createRandom();
             IEnumerable<Product> objCategoryList = _db.Products.ToList();
+            Response.Headers.Add("Refresh", "300");
             return View(objCategoryList);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -457,7 +458,8 @@ namespace ScadaProject.Controllers
                 tempProduct.PerEmpry = sum3 * 100 / sum1;
                 ProductSummaryList.Add(tempProduct);
             }
-           return View(ProductSummaryList);
+            Response.Headers.Add("Refresh", "3000");
+            return View(ProductSummaryList);
         }
         //ProductReport && ShowGraph---------------------------------------------------------------------
     }
