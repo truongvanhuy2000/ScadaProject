@@ -31,5 +31,9 @@ namespace ScadaProject.Models
 
         [Required]
         public int ThoiGianDayGoi { get; set; }
+
+
+        [Required]
+        public int DayChuyen { get; set; }
     }
 }

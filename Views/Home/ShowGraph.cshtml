@@ -7,8 +7,74 @@
 @using System.Drawing
 @inject IHttpContextAccessor HttpContextAccessor
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+    .title {
+        background-color: #80ced6;
+        font-family: 'Roboto';
+		font-size: 40px;
+		font-weight: 600;
+        position: relative;
+         margin : 20px ;
+    }
+
+    #chart_div{
+           position: relative;
+           top: 20px;
+           left: 290px;
+           border-style: solid;
+           border-width: 2px;
+           margin-right: 750px;
+           padding : 5px;
+
+    }
+
+    #chart_div2{
+           position: relative;
+           left: 45px;
+           top: 80px;
+           border-style: groove  ;
+           border-width: 2px;
+           padding-right: 20px;
+    }
+
+        #chart_div3{
+           position: relative;
+           left: 135px;
+           top: 80px;
+           border-style: groove  ;
+           border-width: 2px;
+           padding-right: 20px;
+    }
+
+
+        #chart_div4{
+           position: relative;
+           left: 45px;
+           top: 80px;
+           border-style: groove  ;
+           border-width: 2px;
+           padding-right: 20px;
+    }
+
+    #chart_div5{
+           position: relative;
+           left: 135px;
+           top: 80px;
+           border-style: groove  ;
+           border-width: 2px;
+           padding-right: 20px;
+    }
+
+
+
+
+</style>
 <!DOCTYPE html>
-<h1>Đồ thị</h1>
+<h1 class="title">ĐỒ THỊ</h1>
 
 <html>
       <head>
@@ -85,29 +151,87 @@
                                  role: "annotation" },
                                2]);
 
+            // Create the data table4.
+           var dat4 =[["SanPham", "SoLuong", { role: "style" } ]];
+                @foreach (var r in Model)
+                {
+                    Random ran = new Random();
+                    var BackColor = Color.FromArgb(ran.Next(255), ran.Next(255), ran.Next(255));
+                    String color = BackColor.Name.Remove(0, 2);
+                    color = "#" + color; 
+                    @:dat4.push([ "@Html.Raw(r.ProductName)", @r.PerDamaged, "@color"]);
+                }
+              var data4 = google.visualization.arrayToDataTable(dat4);
+              var view4 = new google.visualization.DataView(data4);
+              view4.setColumns([0, 1,
+                               { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                               2]);
+
+   
+           // Create the data table5.
+           var dat5 =[["SanPham", "SoLuong", { role: "style" } ]];
+                @foreach (var r in Model)
+                {
+                    Random ran = new Random();
+                    var BackColor = Color.FromArgb(ran.Next(255), ran.Next(255), ran.Next(255));
+                    String color = BackColor.Name.Remove(0, 2);
+                    color = "#" + color; 
+                    @:dat5.push([ "@Html.Raw(r.ProductName)", @r.PerEmpry, "@color"]);
+                }
+              var data5 = google.visualization.arrayToDataTable(dat5);
+              var view5 = new google.visualization.DataView(data5);
+              view5.setColumns([0, 1,
+                               { calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation" },
+                               2]);
+
             // Set chart options
             var options = {
                 title: "Tổng số lượng sản phẩm",
-                width: 600,
-                height: 400,
+                width: 1100,
+                height: 650,
                 bar: {groupWidth: "95%"},
                 legend: { position: "none" },
               };
             // Set chart options
-            var options2 = {
+            var options2 = {    
                 title: "Số sản phẩm hỏng",
-                width: 600,
-                height: 400,
+                width: 770,
+                height: 450,
                 bar: {groupWidth: "95%"},
                 legend: { position: "none" },
               };
             // Set chart options
             var options3 = {
                 title: "Số sản phẩm rỗng",
-                width: 600,
-                height: 400,
+                width: 770,
+                height: 450,
                 bar: {groupWidth: "95%"},
                 legend: { position: "none" },
+
+              };
+            // Set chart options
+            var options4 = {
+                title: "Phần trăm Số sản phẩm hỏng",
+                width: 770,
+                height: 450,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+
+              };
+                          // Set chart options
+            var options5 = {
+                title: "Phần trăm Số sản phẩm rỗng",
+                width: 770,
+                height: 450,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+
               };
 
             // Instantiate and draw our chart, passing in some options.
@@ -117,6 +241,10 @@
             chart2.draw(data2, options2);
             var chart3 = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
             chart3.draw(data3, options3);
+            var chart4 = new google.visualization.ColumnChart(document.getElementById('chart_div4'));
+            chart4.draw(data4, options4);
+            var chart5 = new google.visualization.ColumnChart(document.getElementById('chart_div5'));
+            chart5.draw(data5, options5);
 
           }
         </script>
@@ -124,8 +252,10 @@
 
       <body>
         <!--Divs that will hold the charts-->
-        <div id="chart_div"></div>
-        <div id="chart_div2"></div>
-        <div id="chart_div3"></div>
+        <div id="chart_div" ></div>
+        <span id="chart_div2"></span>
+        <span id="chart_div3"></span>
+        <span id="chart_div4"></span>
+        <span id="chart_div5"></span>
       </body>
     </html>

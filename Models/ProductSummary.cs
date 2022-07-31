@@ -17,5 +17,11 @@ namespace ScadaProject.Models
         public int TotalDamaged { get; set; }
         [Required]
         public int TotalEmpry { get; set; }
+
+        [Required]
+        public float PerDamaged { get; set; }
+
+        [Required]
+        public float PerEmpry { get; set; }
     }
 }

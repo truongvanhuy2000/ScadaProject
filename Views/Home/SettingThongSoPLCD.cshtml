@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SettingPLC>
+@{
+    ViewData["Title"] = "UserManagement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<h1>Danh Sách Người Dùng</h1>
+@if(TempData["Register PLC Success"] != null) 
+{
+		<div id="popupdiv" style="border: 1px solid green;">
+            @TempData["Register PLC Success"]
+        </div>
+}
+
+@if(TempData["Register PLC fail"] != null) 
+{
+		<div id="popupdiv" style="border: 1px solid green;">
+            @TempData["Register PLC Success"]
+        </div>
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bootstrap basic table example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="container ">
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+  <tr>
+      <th>Dây Chuyền</th>
+      <th>Tốc độ chuẩn(gói/phút)</th>
+      <th>Thời gian tính dừng máy(x0.1s)</th>
+      <th>Thời gian chấp nhận gói(x0.1s)</th>
+      <th>Thời gian tính gói cấn(x0.1s)</th>
+      <th>Thời gian đẩy gói cấn(x0.1s)</th>
+      <th>Thời gian Xi-Lanh đẩy gói(x0.1s)</th>
+      <th>Thời gian cập nhập PLC(x0.1s)</th>
+
+  </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="10%">
+                    @obj.DayChuyen
+                </td>
+                <td width="15%">
+                    @obj.TocDoChuan
+                </td>
+                <td width="15%">
+                    @obj.ThoiGianTinhDungMay
+                </td>
+                 <td width="15%">
+                    @obj.ThoiGianChapNhanGoi
+                </td>
+                <td width="15%">
+                    @obj.ThoiGianTinhGoiCan
+                </td>
+                <td width="10%">
+                    @obj.ThoiGianDayGoi
+                </td>
+                <td width="10%">
+                    @obj.ThoiGianDayGoi
+                </td>
+                <td width="10%">
+                    @obj.ThoiGianCapNhap
+                </td>
+            </tr>
+        }
+    </tbody>    
+</table>
+</div><br /><br />
+
+</body>
+</html>

@@ -120,7 +120,7 @@ namespace ScadaProject.Controllers
             var obj = _db.SettingCaSanXuats.Find(1);
             if (obj == null)
             {
-                acc.Id = 1;
+ 
                 _db.SettingCaSanXuats.Add(acc);
                 _db.SaveChanges();
 
@@ -128,7 +128,7 @@ namespace ScadaProject.Controllers
             }
             _db.SettingCaSanXuats.Remove(obj);
             _db.SaveChanges();
-            acc.Id = 1;
+            //acc.Id = 1;
             _db.SettingCaSanXuats.Add(acc);
             _db.SaveChanges();
 
@@ -173,7 +173,7 @@ namespace ScadaProject.Controllers
             var obj = _db.SettingCaSanXuats.Find(3);
             if (obj == null)
             {
-                acc.Id = 3;
+                //acc.Id = 3;
                 _db.SettingCaSanXuats.Add(acc);
                 _db.SaveChanges();
 
@@ -215,7 +215,7 @@ namespace ScadaProject.Controllers
             _db.SetGeneralInformations.Remove(obj);
             _db.SaveChanges();
             TempData["Delete Success"] = "Deleted Sucessfully";
-            return RedirectToAction("InforSettingCaSanXuat");
+            return RedirectToAction("GeneralInformation");
         }
 
         public IActionResult DeleteSettingKip(int? id)
@@ -252,7 +252,7 @@ namespace ScadaProject.Controllers
             IdProcduct = objCategoryList.Count() + 1;
 
         Next: 
-            acc.Id = IdProcduct;
+            //acc.Id = IdProcduct;
             _db.SetGeneralInformations.Add(acc);
             _db.SaveChanges();
             TempData["Register Success"] = "Account created successfully";
@@ -276,23 +276,82 @@ namespace ScadaProject.Controllers
         {
             return View();
         }
- 
+
+        public IActionResult SettingThongSoPLCD()
+        {
+            IEnumerable<SettingPLC> Setting = _db.SettingPLCs.ToList();
+            return View(Setting);
+        }
+
         [HttpPost]
-        public IActionResult SettingPLCDuMaMay(SettingPLC acc)
+        public IActionResult SettingThongSoPLCD(SettingPLC acc)
         {
             IEnumerable<SettingPLC> objCategoryList = _db.SettingPLCs.ToList();
-            var obj = _db.SettingPLCs.Find(1);
-            if (obj == null)
+            List<SettingPLC> ProductSummaryList = new List<SettingPLC>();
+            foreach (var item in objCategoryList)
             {
-                return NotFound();
+                if (item.DayChuyen == acc.DayChuyen)
+                {
+                    _db.SettingPLCs.Remove(item);
+                    _db.SaveChanges();
+                    break;
+                }
             }
-            _db.SettingPLCs.Remove(obj);
-            _db.SaveChanges();
-            acc.Id = 1;
-            _db.SettingPLCs.Add(acc);
-            _db.SaveChanges();
-            
-            return RedirectToAction("Index");
+            //var obj = _db.SettingPLCs.Find(acc.DayChuyen);
+            ////acc.Id = acc.DayChuyen;
+            if (acc.DayChuyen != 1 && acc.DayChuyen != 2 && acc.DayChuyen != 3 && acc.DayChuyen != 4)
+            {
+                TempData["Register PLC fail"] = "Register Sucessfully";
+                return View();
+            }
+            //if (obj == null)
+            //{
+            //foreach (var entity in _db.SettingPLCs)
+            //    _db.SettingPLCs.Remove(entity);
+            //_db.SaveChanges();
+
+            //    _db.SettingPLCs.Add(acc);
+            //    _db.SaveChanges();
+            //    objCategoryList = _db.SettingPLCs.ToList();
+            //    TempData["Register PLC Success"] = "Register Sucessfully";
+
+            //    return View(objCategoryList);
+            //} else
+            //{
+            //_db.SettingPLCs.Remove(obj);
+;
+                _db.SettingPLCs.Add(acc);
+                _db.SaveChanges();
+                objCategoryList = _db.SettingPLCs.ToList();
+
+
+            var temp = new SettingPLC();
+                SettingPLC[] evenNums = objCategoryList.ToArray();
+                for (int i = 0; i < (objCategoryList.Count()); i++)
+                {
+                    for (int j = i + 1; j < objCategoryList.Count() ; j++)
+                    {
+                        if (evenNums[i].DayChuyen > evenNums[j].DayChuyen)
+                        {
+                            temp = evenNums[i];
+                            evenNums[i] = evenNums[j];
+                            evenNums[j] = temp;
+                        }
+                    }
+                    ProductSummaryList.Add(evenNums[i]);
+                }
+            foreach (var entity in _db.SettingPLCs)
+                _db.SettingPLCs.Remove(entity);
+            foreach (var entity in ProductSummaryList)
+            {
+                _db.SettingPLCs.Add(entity);
+            }
+            //}
+
+
+            TempData["Register PLC Success"] = "Register Sucessfully";
+
+            return View(objCategoryList);
         }
 
         //ProductReport && ShowGraph---------------------------------------------------------------------
@@ -395,6 +454,8 @@ namespace ScadaProject.Controllers
                 tempProduct.TotalAmounts = sum1;
                 tempProduct.TotalDamaged = sum2;
                 tempProduct.TotalEmpry = sum3;
+                tempProduct.PerDamaged = sum2 * 100  / sum1 ;
+                tempProduct.PerEmpry = sum3 * 100 / sum1;
                 ProductSummaryList.Add(tempProduct);
             }
            return View(ProductSummaryList);

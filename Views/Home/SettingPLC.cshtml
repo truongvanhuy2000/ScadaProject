@@ -153,7 +153,15 @@
 	</table>
   </form>*@
 
-  <form asp-controller="Home" asp-action="SettingPLCDuMaMay" method="post">
+  <form asp-controller="Home" asp-action="SettingThongSoPLCD" method="post">
+
+    <label for="NhiemVu">Dây Chuyền</label>
+    <select asp-for="DayChuyen" name="DayChuyen">
+      <option value="1" >Dây chuyền 1</option>
+      <option value="2">Dây chuyền 2</option>
+	  <option value="3">Dây chuyền 3</option>
+	  <option value="4">Dây chuyền 4</option>
+    </select>
 
     <label class="text" for="FullName">Tốc độ chuẩn(gói/phút):</label>
     <span asp-validation-for="TocDoChuan" class="text-danger"></span>
@@ -178,15 +186,14 @@
     <label class="text" for="Email">Thời gian đẩy gói cấn(x0.1s):</label>
     <span asp-validation-for="ThoiGianDayGoiCan" class="text-danger"></span>
     <input type="text" asp-for="ThoiGianDayGoiCan" placeholder="Thời gian đẩy gói..">
-    
+ 
+	<label class="text" for="NhiemVu">Thời gian Xi-Lanh đẩy gói(x0.1s):</label>
+    <span asp-validation-for="ThoiGianDayGoi" class="text-danger"></span>
+    <input type="text" asp-for="ThoiGianDayGoi" placeholder="Thời gian xi lanh đẩy..">
 
     <label class="text" for="Gender">Thời gian cập nhập PLC(x0.1s):</label>
 	<span asp-validation-for="ThoiGianCapNhap" class="text-danger"></span>
     <input type="text" asp-for="ThoiGianCapNhap" placeholder="Thời gian cập nhập..">
-
-    <label class="text" for="NhiemVu">Thời gian Xi-Lanh đẩy gói(x0.1s):</label>
-    <span asp-validation-for="ThoiGianDayGoi" class="text-danger"></span>
-    <input type="text" asp-for="ThoiGianDayGoi" placeholder="Thời gian xi lanh đẩy..">
 
     <input type="submit" value="Submit">
 
