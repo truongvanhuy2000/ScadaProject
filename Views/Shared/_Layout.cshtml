@@ -91,12 +91,7 @@
                 }
                 @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat")
                 {
-                    <li>
-                        <a asp-controller="Home" asp-action="UpdateInformation">
-                            <i class="fas fa-image"></i>
-                            Cài đặt thông tin chung
-                        </a>
-                    </li>
+ 
 
                     <li>
                         <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >

@@ -22,6 +22,9 @@
     <thead>
         <tr>
             <th>
+                Kíp
+            </th>
+            <th>
                 Tên trưởng ca
             </th>
             <th>
@@ -36,6 +39,9 @@
         @foreach(var obj in Model)
         {
             <tr>
+                <td width="20%">
+                    @obj.Kip
+                </td>
                 <td width="40%">
                     @obj.NameTruongCa
                 </td>

@@ -15,6 +15,14 @@ namespace ScadaProject.Models
         [MaxLength(10)]
         public string NameTruongCa { get; set; }
 
+
+        [Required]
+        [MaxLength(20)]
+        public string NameSanPham { get; set; }
+
+        [Required]
+        public int Kip { get; set; }
+
     }
 }
 

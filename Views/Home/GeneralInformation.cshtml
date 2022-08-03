@@ -1,10 +1,15 @@
-﻿@model IEnumerable<SetGeneralInformation>
+﻿@model IEnumerable<SettingCaSanXuat>
 
 @{
-    ViewData["Title"] = "Set General Information";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "InforSetting";
 }
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
 
+<body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -13,173 +18,47 @@
 });
 });
 </script>
-
-@using Microsoft.AspNetCore.Http;
-@inject IHttpContextAccessor HttpContextAccessor
-
-
-<!DOCTYPE html>
-<html>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-
-@*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>*@
-
-<style type="text/css">
-	.title{
-    	font-size: 40px;
-        font-family: 'Roboto';
-        text-transform: uppercase;
-       	color: #708090;
-    	position: relative;
-		top: 0px;
-		height: 50px;
-		background-color: #F0FFF0;
-		padding-left: 5px;
-        margin-bottom: 30px;
-        
-    }
-    
-    .truong_ca{
-    	position: relative;
-        top: 5px;
-        bottom: 30px;
-    	margin-left: 2px;
-        margin-bottom: 40px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    
-     .san_pham {
-    	position: relative;
-        top: 5px;
-        left: 250px;
-        bottom: 30px;
-    	margin-left: 2px;
-        margin-bottom: 40px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    
-    .button-feature{
-    	background-color: #00FFFF;
-        position: relative;
-        left: 280px;
-        top: 5px;
-    }
-    
-    table.data{
-		position: relative;
-		top: 25px;
-        border-collapse: collapse;
-		cursor:pointer;
-        width: 100%;
-        bottom: 30px;
-	}
-    
-    td.test{
-        font-size: 25px;
-		position: relative;
-		border-bottom: 1px solid #ccc;
-        text-align: left;
-        padding: 15px;
-		font-family: 'Roboto';
-	}
-    
-    * {
-  		box-sizing: border-box;
-	}
-    
-    .row {
-		margin-left:-5px;
-		margin-right:-5px;
-	}
-  
-	.column {
-		float: left;
-		width: 50%;
-		padding: 5px;
-	}
-	
-	td.name_truong_ca{
-		position: relative;
-        top: 10px;
-		border-top: 1px solid #ccc;
-		border-bottom: 1px solid #ccc;
-		padding: 15px;
-		font-family: 'Roboto';
-        font-size: 25px;
-        
-	}
-
-    td.title_table{
-        font-weight: 600;
-        font-size: 22px;
-    }
-}
-</style>
-
-<body>
-	<div class="title"> Thông tin trưởng ca </div>
-@if(TempData["Register Success"] != null) 
-{
-		<div id="popupdiv" style="border: 1px solid green;">
-            @TempData["Register Success"]
-        </div>
-}
-@if(TempData["Delete Success"] != null) 
-{
-		<div id="popupdiv" style="border: 1px solid green;">
-            @TempData["Delete Success"]
-        </div>
-}
-
-@if(TempData["Register Error"] != null) 
-{
-		<div id="popupdiv" style="border: 1px solid green;">
-            @TempData["Register Error"]
-        </div>
-}
-
 <table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>
+                Kíp
+            </th>
+            <th>
                 Tên trưởng ca
             </th>
             <th>
-                Tên sản phẩm
+                Giờ
             </th>
-        </tr>
+            <th>
+                Phút
+            </th>
+         </tr>
     </thead>
-
     <tbody>
         @foreach(var obj in Model)
         {
-           <tr>
-                <td width="65">
+            <tr>
+                <td width="20%">
+                    @obj.Kip
+                </td>
+                <td width="40%">
                     @obj.NameTruongCa
                 </td>
-                <td width="65">
-                    @obj.NameProduct
+                <td width="20%">
+                    @obj.TimeStartHour
                 </td>
-   
-                <td width="1">
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Home" asp-action="DeleteTruongCa"  asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-trash3"></i>Delete</a>
-                    </div>   
-                </td>  
-          </tr>
+                <td width="20%">
+                    @obj.TimeStarMinute
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">  
+                           <a asp-controller="Home" asp-action="DeleteSettingKip"  asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-trash3"></i>Delete</a>                                      
+                    </div>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-
-
 </body>
-</html>
-
 

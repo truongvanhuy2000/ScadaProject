@@ -2,9 +2,11 @@
 @{
     ViewData["Title"] = "SettingProduction";
 }
+
 @model SettingCaSanXuat
 @Html.AntiForgeryToken()
 @*<link rel="stylesheet" href="~/css/ContactForm.css" asp-append-version="true">*@
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +71,7 @@
 
 	.title{
 		font-size: 38px;
-		background-color: #F0F8FF;
+		background-color: #F0F8FF	;
 	}
 
 /*	.Name_truong_ca {
@@ -84,7 +86,7 @@
 	}
 		
 .Name_truong_ca {
-  width: 40%;
+  width: 20%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -108,8 +110,32 @@
   left: 70px;
 }
 
+.timegio {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;	
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  left: 110px;
+}
+
+.timephut {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;	
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  left: 250px;
+}
+
 input[type=submit] {
-  width: 35%;
+  width: 50%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -118,8 +144,8 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
   position: relative;
-  left: 160px;
-  bottom: 8px;
+  left: 180px;
+  bottom: -14px;
 
   
 }
@@ -130,12 +156,44 @@ input[type=submit]:hover {
 
 .div_kip {
 	position: relative;
-	bottom: 5px;
+	bottom: 25px;
 	
 	font-size: 30px;
 	font-weight: 600;
-	background-color: #D3D3D3;
+	background-color: #F3D3D3;
 	background-size: cover;
+}
+
+.Namesp{
+    	position: relative;
+		padding-top: 3px;
+		padding-bottom: 3px;
+	position: relative;
+	right: -100px;
+}
+
+.Namesp1{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  left: 110px;
+}
+
+.Kip {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  left: 150px;
 }
 
 	
@@ -148,61 +206,39 @@ input[type=submit]:hover {
             @TempData["Setting SanXuat Error"]
         </div>
 }
-<div class="div_kip">Kíp 1</div>
+<div class="div_kip">Cài Đặt Thông Tin Trưởng Ca Và Sản Phẩm</div>
  <form asp-controller="Home" asp-action="SetKip1" method="post">
 
-    <div for="FullName">Tên trưởng ca:
+    <label  for="UserName">Tên Trưởng Ca:</label>
     <span asp-validation-for="NameTruongCa" class="text-danger"></span>
-    <input class="Name_truong_ca" type="text" width="100%" asp-for="NameTruongCa" placeholder="Tên trưởng ca..">
-    </div>
+    <input type="text" asp-for="NameTruongCa" class="time" placeholder="Tên Trưởng Ca..">
+
+    <label class="Namesp" for="Name">Tên Sản Phẩm:</label>
+    <select class="Namesp1" asp-for="NameSanPham" name="NameSanPham">
+			 @foreach (var SanPham in ViewData["ProductList"] as List<string>) 
+				{ 
+					<option value=@SanPham >@SanPham</option>
+				}  
+    </select>
+	
 	<div>
     <label  for="UserName">Thời gian:</label>
     <span asp-validation-for="TimeStartHour" class="text-danger"></span>
-    <input type="text" asp-for="TimeStartHour" class="time" placeholder="Giờ..">
+    <input type="text" asp-for="TimeStartHour" class="timegio" placeholder="Giờ..">
 	
     <label  for="UserName"></label>
     <span asp-validation-for="TimeStarMinute" class="text"></span>
-    <input type="text" class="time" asp-for="TimeStarMinute" placeholder="Phút..">
+    <input type="text" class="timephut" asp-for="TimeStarMinute" placeholder="Phút..">
 	</div>
-	<input class = "button-inf" type="submit" value="Submit">
-</form>
-<div class="div_kip">Kíp 2</div>
- <form asp-controller="Home" asp-action="SetKip2" method="post">
 
-    <div for="FullName">Tên trưởng ca:
-    <span asp-validation-for="NameTruongCa" class="text-danger"></span>
-    <input class="Name_truong_ca" type="text" width="100%" asp-for="NameTruongCa" placeholder="Tên trưởng ca..">
-    </div>
-	<div>
-    <label  for="UserName">Thời gian:</label>
-    <span asp-validation-for="TimeStartHour" class="text-danger"></span>
-    <input type="text" asp-for="TimeStartHour" class="time" placeholder="Giờ..">
-	
-    <label  for="UserName"></label>
-    <span asp-validation-for="TimeStarMinute" class="text"></span>
-    <input type="text" class="time" asp-for="TimeStarMinute" placeholder="Phút..">
-	</div>
-	<input class = "button-inf" type="submit" value="Submit">
-</form>
+		<label  for="UserName">Kíp:</label>
+	<select class="Kip" asp-for="Kip" name="Kip">
+		<option value="1" >Kíp 1</option>
+		<option value="2" >Kíp 2</option>
+		<option value="3" >Kíp 3</option>
+    </select>
 
-<div class="div_kip">Kíp 3</div>
-
- <form asp-controller="Home" asp-action="SetKip3" method="post">
-
-    <div for="FullName">Tên trưởng ca:
-    <span asp-validation-for="NameTruongCa" class="text-danger"></span>
-    <input class="Name_truong_ca" type="text" width="100%" asp-for="NameTruongCa" placeholder="Tên trưởng ca..">
-    </div>
-	<div>
-    <label  for="UserName">Thời gian:</label>
-    <span asp-validation-for="TimeStartHour" class="text-danger"></span>
-    <input type="text" asp-for="TimeStartHour" class="time" placeholder="Giờ..">
-	
-    <label  for="UserName"></label>
-    <span asp-validation-for="TimeStarMinute" class="text"></span>
-    <input type="text" class="time" asp-for="TimeStarMinute" placeholder="Phút..">
-	</div>
-	<input class = "button-inf" type="submit" value="Submit">
+	<div><input class = "button-inf" type="submit" value="Submit"></div>
 </form>
 </body>
 

@@ -117,75 +117,29 @@ namespace ScadaProject.Controllers
                 return RedirectToAction("InforSettingCaSanXuat");
             }
             IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
-            var obj = _db.SettingCaSanXuats.Find(1);
-            if (obj == null)
+            foreach(var obj in objCategoryList)
             {
- 
+                if (obj.Kip == acc.Kip)
+                {
+                    _db.SettingCaSanXuats.Remove(obj);
+                    _db.SaveChanges(true);
+                    _db.SettingCaSanXuats.Add(acc);
+                    _db.SaveChanges(true);
+                    return RedirectToAction("InforSettingCaSanXuat");
+                }
+            }
+            //var obj = _db.SettingCaSanXuats.Find(acc.Kip);
+            //if(obj == null)
+            //{
+            //    _db.SettingCaSanXuats.Add(acc);
+            //    _db.SaveChanges();
+            //    return RedirectToAction("InforSettingCaSanXuat");
+            //}
+           
                 _db.SettingCaSanXuats.Add(acc);
                 _db.SaveChanges();
-
                 return RedirectToAction("InforSettingCaSanXuat");
-            }
-            _db.SettingCaSanXuats.Remove(obj);
-            _db.SaveChanges();
-            //acc.Id = 1;
-            _db.SettingCaSanXuats.Add(acc);
-            _db.SaveChanges();
-
-            return RedirectToAction("InforSettingCaSanXuat");
-        }
-        [HttpPost]
-        public IActionResult SetKip2(SettingCaSanXuat acc)
-        {
-            if (acc.TimeStarMinute > 60 || acc.TimeStartHour > 24 || acc.TimeStartHour < 0 || acc.TimeStarMinute < 0)
-            {
-                TempData["Setting SanXuat Error"] = "Setting SanXuat Error";
-                return RedirectToAction("InforSettingCaSanXuat");
-            }
-            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
-            var obj = _db.SettingCaSanXuats.Find(2);
-            if (obj == null)
-            {
-                acc.Id = 2;
-                _db.SettingCaSanXuats.Add(acc);
-                _db.SaveChanges();
-
-                return RedirectToAction("InforSettingCaSanXuat");
-            }
-            _db.SettingCaSanXuats.Remove(obj);
-            _db.SaveChanges();
-            acc.Id = 2;
-            _db.SettingCaSanXuats.Add(acc);
-            _db.SaveChanges();
-
-            return RedirectToAction("InforSettingCaSanXuat");
-        }
-        [HttpPost]
-        public IActionResult SetKip3(SettingCaSanXuat acc)
-        {
-            if (acc.TimeStarMinute > 60 || acc.TimeStartHour > 24 || acc.TimeStartHour < 0 || acc.TimeStarMinute < 0)
-            {
-                TempData["Setting SanXuat Error"] = "Setting SanXuat Error";
-                return RedirectToAction("InforSettingCaSanXuat");
-            }
-
-            IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
-            var obj = _db.SettingCaSanXuats.Find(3);
-            if (obj == null)
-            {
-                //acc.Id = 3;
-                _db.SettingCaSanXuats.Add(acc);
-                _db.SaveChanges();
-
-                return RedirectToAction("InforSettingCaSanXuat");
-            }
-            _db.SettingCaSanXuats.Remove(obj);
-            _db.SaveChanges();
-            acc.Id = 3;
-            _db.SettingCaSanXuats.Add(acc);
-            _db.SaveChanges();
-
-            return RedirectToAction("InforSettingCaSanXuat");
+            
         }
         //Setting Kip------------------------------------------------------------------------------------------------
 
@@ -261,13 +215,29 @@ namespace ScadaProject.Controllers
         [HienTruongCheck]
         public IActionResult GeneralInformation()
         {
-            IEnumerable<SetGeneralInformation> Setting = _db.SetGeneralInformations.ToList();
+            IEnumerable<SettingCaSanXuat> Setting = _db.SettingCaSanXuats.ToList();
             return View(Setting);
         }
         [HienTruongCheck]
         public IActionResult SettingSanXuat()
-        {
-            //IEnumerable<SettingCaSanXuat> Setting = _db.SettingCaSanXuats.ToList();
+        {  
+            IEnumerable<Product> objCategoryList = _db.Products.ToList();
+            List<String> ProductList = new List<String>();
+            List<ProductSummary> ProductSummaryList = new List<ProductSummary>();
+            foreach (var Product in objCategoryList)
+            {
+                if (ProductList.Count == 0)
+                {
+                    ProductList.Add(Product.ProductName);
+                }
+                if (ProductList.Contains(Product.ProductName))
+                {
+                    continue;
+                }
+                ProductList.Add(Product.ProductName);
+            }
+
+            ViewData["ProductList"] = ProductList;
             return View();
         }
 
