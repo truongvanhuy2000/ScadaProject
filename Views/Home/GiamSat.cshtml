@@ -1,26 +1,13 @@
-﻿@model IEnumerable<SettingPLC>
+﻿@model IEnumerable<GiamSat>
 @{
-    ViewData["Title"] = "UserManagement";
+    ViewData["Title"] = "Giám Sát Thông tin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor HttpContextAccessor
 
 <!DOCTYPE html>
-<h1>Thông số PLC</h1>
-@if(TempData["Register PLC Success"] != null) 
-{
-		<div id="popupdiv" style="border: 1px solid green;">
-            @TempData["Register PLC Success"]
-        </div>
-}
-
-@if(TempData["Register PLC fail"] != null) 
-{
-		<div id="popupdiv" style="border: 1px solid green;">
-            @TempData["Register PLC Success"]
-        </div>
-}
+<h1>Giám Sát Chất Lượng Sản Phẩm</h1>
 
 <!DOCTYPE html>
 <html>
@@ -39,12 +26,13 @@
     <thead>
         <tr>
       <th>Dây Chuyền</th>
-      <th>Tốc độ chuẩn(gói/phút)</th>
-      <th>Thời gian tính dừng máy(x0.1s)</th>
-      <th>Thời gian chấp nhận gói(x0.1s)</th>
-      <th>Thời gian tính gói cấn(x0.1s)</th>
-      <th>Thời gian đẩy gói cấn(x0.1s)</th>
-      <th>Thời gian cập nhập PLC(x0.1s)</th>
+      <th>Tốc độ máy(gói/phút)</th>
+      <th>Hiệu suất(%OEE)</th>
+      <th>Sản lượng(gói)</th>
+      <th>Số gói cấn gia vị</th>
+      <th>%Gói cấn gia vị</th>
+      <th>Số Gói Rỗng</th>
+      <th>%Gói Rỗng</th>
 
   </tr>
     </thead>
@@ -59,19 +47,22 @@
                     @obj.TocDoChuan
                 </td>
                 <td width="15%">
-                    @obj.ThoiGianTinhDungMay
+                    @obj.HieuSuat
                 </td>
                  <td width="15%">
-                    @obj.ThoiGianChapNhanGoi
+                    @obj.SanLuongGoi
                 </td>
                 <td width="15%">
-                    @obj.ThoiGianTinhGoiCan
+                    @obj.TotalDamaged
                 </td>
                 <td width="15%">
-                    @obj.ThoiGianTinhGoiCan
+                    @obj.PerDamaged
                 </td>
                 <td width="10%">
-                    @obj.ThoiGianCapNhap
+                    @obj.TotalEmpry
+                </td>
+                <td width="10%">
+                    @obj.PerEmpry
                 </td>
             </tr>
         }

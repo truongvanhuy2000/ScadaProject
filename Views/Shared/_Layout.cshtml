@@ -35,8 +35,8 @@
     <div class="wrapper">
     <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>HUST</h3>
-                <strong>H</strong>
+                <h3>MASAN</h3>
+                <strong>M</strong>
             </div>
 
             <ul class="list-unstyled components">
@@ -46,6 +46,12 @@
                         <i class="fas fa-home"></i>
                         Trang Chủ
                     </a>
+
+                    <a asp-controller="Home" asp-action="GiamSat">
+                        <i class="fas fa-image"></i>
+                        Giám Sát Chất Lượng
+                    </a>
+
                     @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin")
                      {
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
@@ -67,6 +73,7 @@
                         
                     </ul>
                 </li>
+
                 @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Hien Truong")
                 {
                     <li>
@@ -89,11 +96,12 @@
                         </a>
                     </li>
                 }
-                @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat")
+                @if(@HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "admin" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Giam Sat" || @HttpContextAccessor.HttpContext.Session.GetString("NhiemVu") == "Hien Truong")
                 {
  
 
                     <li>
+
                         <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" >
                             <i class="fas fa-user"></i>
                             Hiện trường

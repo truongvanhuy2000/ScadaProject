@@ -20,29 +20,7 @@ namespace ScadaProject.Controllers
         //Home Page && Index-------------------------------------------------------------
         public IActionResult Index()
         {
-            float _totalPacket = 0;
-            float _damagePacket = 0;
-            float _emptyPacket = 0;
-            float check = 0;
-            IEnumerable<Product> Setting = _db.Products.ToList();
-            foreach (var product in Setting)
-            {
-                _totalPacket = _totalPacket + product.TotalPackage;
-                _damagePacket = _damagePacket + product.DamagedPackage;
-                _emptyPacket = _emptyPacket + product.EmptyPackage;
-                check++;
-            }
-
-            //_totalPacket /= check;
-            //_emptyPacket /= check;
-            //_damagePacket /= check;
-
-            var message = new Product();
-
-            message.TotalPackage = Setting.First().TotalPackage;
-            message.EmptyPackage = Setting.First().EmptyPackage;
-            message.DamagedPackage = Setting.First().DamagedPackage;
-            return View(message);
+            return View();
         }
         public IActionResult Logout()
         {
@@ -117,7 +95,7 @@ namespace ScadaProject.Controllers
                 return RedirectToAction("InforSettingCaSanXuat");
             }
             IEnumerable<SettingCaSanXuat> objCategoryList = _db.SettingCaSanXuats.ToList();
-            foreach(var obj in objCategoryList)
+            foreach (var obj in objCategoryList)
             {
                 if (obj.Kip == acc.Kip)
                 {
@@ -135,11 +113,11 @@ namespace ScadaProject.Controllers
             //    _db.SaveChanges();
             //    return RedirectToAction("InforSettingCaSanXuat");
             //}
-           
-                _db.SettingCaSanXuats.Add(acc);
-                _db.SaveChanges();
-                return RedirectToAction("InforSettingCaSanXuat");
-            
+
+            _db.SettingCaSanXuats.Add(acc);
+            _db.SaveChanges();
+            return RedirectToAction("InforSettingCaSanXuat");
+
         }
         //Setting Kip------------------------------------------------------------------------------------------------
 
@@ -204,7 +182,7 @@ namespace ScadaProject.Controllers
 
             IdProcduct = objCategoryList.Count() + 1;
 
-        Next: 
+        Next:
             //acc.Id = IdProcduct;
             _db.SetGeneralInformations.Add(acc);
             _db.SaveChanges();
@@ -220,7 +198,7 @@ namespace ScadaProject.Controllers
         }
         [HienTruongCheck]
         public IActionResult SettingSanXuat()
-        {  
+        {
             IEnumerable<Product> objCategoryList = _db.Products.ToList();
             List<String> ProductList = new List<String>();
             List<ProductSummary> ProductSummaryList = new List<ProductSummary>();
@@ -289,26 +267,26 @@ namespace ScadaProject.Controllers
             //{
             //_db.SettingPLCs.Remove(obj);
 ;
-                _db.SettingPLCs.Add(acc);
-                _db.SaveChanges();
-                objCategoryList = _db.SettingPLCs.ToList();
+            _db.SettingPLCs.Add(acc);
+            _db.SaveChanges();
+            objCategoryList = _db.SettingPLCs.ToList();
 
 
             var temp = new SettingPLC();
-                SettingPLC[] evenNums = objCategoryList.ToArray();
-                for (int i = 0; i < (objCategoryList.Count()); i++)
+            SettingPLC[] evenNums = objCategoryList.ToArray();
+            for (int i = 0; i < (objCategoryList.Count()); i++)
+            {
+                for (int j = i + 1; j < objCategoryList.Count(); j++)
                 {
-                    for (int j = i + 1; j < objCategoryList.Count() ; j++)
+                    if (evenNums[i].DayChuyen > evenNums[j].DayChuyen)
                     {
-                        if (evenNums[i].DayChuyen > evenNums[j].DayChuyen)
-                        {
-                            temp = evenNums[i];
-                            evenNums[i] = evenNums[j];
-                            evenNums[j] = temp;
-                        }
+                        temp = evenNums[i];
+                        evenNums[i] = evenNums[j];
+                        evenNums[j] = temp;
                     }
-                    ProductSummaryList.Add(evenNums[i]);
                 }
+                ProductSummaryList.Add(evenNums[i]);
+            }
             foreach (var entity in _db.SettingPLCs)
                 _db.SettingPLCs.Remove(entity);
             foreach (var entity in ProductSummaryList)
@@ -325,61 +303,62 @@ namespace ScadaProject.Controllers
 
         //ProductReport && ShowGraph---------------------------------------------------------------------
 
-        //public string RandomProductName()
-        //{
-        //    Random rand = new Random();
-        //    int number = rand.Next(0, 5); //returns random number between 0-99
-        //    switch (number)
-        //    {
-        //        case 0:
-        //            return "Gạo";
-        //        case 1:
-        //            return "Bột Canh";
-        //        case 2:
-        //            return "Lúa";
-        //        case 3:
-        //            return "Bột Mỳ";
-        //        case 4:
-        //            return "Hạt Tiêu";
-        //        case 5:
-        //            return "Mỳ Tôm";
-        //    }
-        //    return null;
-        //}
-        //public int RandomNumber(int min, int max)
-        //{
-        //    Random rand = new Random();
-        //    int number = rand.Next(min, max); //returns random number between 0-99
-        //    return number;
-        //}
-        //public String GenerateRandomDates()
-        //{
-        //    var rnd = new Random(Guid.NewGuid().GetHashCode());
+        public string RandomProductName()
+        {
+            Random rand = new Random();
+            int number = rand.Next(0, 5); //returns random number between 0-99
+            switch (number)
+            {
+                case 0:
+                    return "Gạo";
+                case 1:
+                    return "Bột Canh";
+                case 2:
+                    return "Lúa";
+                case 3:
+                    return "Bột Mỳ";
+                case 4:
+                    return "Hạt Tiêu";
+                case 5:
+                    return "Mỳ Tôm";
+            }
+            return null;
+        }
+        public int RandomNumber(int min, int max)
+        {
+            Random rand = new Random();
+            int number = rand.Next(min, max); //returns random number between 0-99
+            return number;
+        }
+        public String GenerateRandomDates()
+        {
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
 
-        //    var year = rnd.Next(1995, 2021);
-        //    var month = rnd.Next(1, 13);
-        //    var days = rnd.Next(1, DateTime.DaysInMonth(year, month) + 1);
+            var year = rnd.Next(1995, 2021);
+            var month = rnd.Next(1, 13);
+            var days = rnd.Next(1, DateTime.DaysInMonth(year, month) + 1);
 
-        //    return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000)).ToString();
-        //}
-        //public void createRandom()
-        //{
-        //    for (int i = 0; i < 50; i++)
-        //    {
-        //        Product obj = new Product();
-        //        obj.CreatedDateTime = GenerateRandomDates();
-        //        obj.ProductName = RandomProductName();
-        //        obj.ProductionLine = RandomNumber(1, 10);
-        //        obj.TotalPackage = RandomNumber(50, 100);
-        //        obj.MachineNumber = RandomNumber(1, 5);
-        //        obj.ProductionShift = RandomNumber(1, 4);
-        //        obj.DamagedPackage = RandomNumber(0, 30);
-        //        obj.EmptyPackage = RandomNumber(0, 30);
-        //        _db.Products.Add(obj);
-        //        _db.SaveChanges();
-        //    }
-        //}
-        [GiamSatCheck]
+            return new DateTime(year, month, days, rnd.Next(0, 24), rnd.Next(0, 60), rnd.Next(0, 60), rnd.Next(0, 1000)).ToString();
+        }
+        public void createRandom()
+        {
+
+            for (int i = 0; i < 30; i++)
+            {
+                Product obj = new Product();
+                obj.CreatedDateTime = GenerateRandomDates();
+                obj.ProductName = RandomProductName();
+                obj.ProductionLine = RandomNumber(1, 5);
+                obj.TotalPackage = RandomNumber(50, 100);
+                obj.MachineNumber = RandomNumber(1, 9);
+                obj.ProductionShift = RandomNumber(1, 4);
+                obj.DamagedPackage = RandomNumber(0, 30);
+                obj.EmptyPackage = RandomNumber(0, 30);
+                _db.Products.Add(obj);
+                _db.SaveChanges();
+            }
+        }
+
         public IActionResult ProductReport()
         {
             //createRandom();
@@ -387,6 +366,7 @@ namespace ScadaProject.Controllers
             Response.Headers.Add("Refresh", "300");
             return View(objCategoryList);
         }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult ShowGraph()
         {
@@ -399,7 +379,7 @@ namespace ScadaProject.Controllers
                 {
                     ProductList.Add(Product.ProductName);
                 }
-                if(ProductList.Contains(Product.ProductName))
+                if (ProductList.Contains(Product.ProductName))
                 {
                     continue;
                 }
@@ -414,7 +394,7 @@ namespace ScadaProject.Controllers
                 tempProduct.ProductName = Product;
                 foreach (var item in objCategoryList)
                 {
-                    if(item.ProductName == Product)
+                    if (item.ProductName == Product)
                     {
                         sum1 += item.TotalPackage;
                         sum2 += item.DamagedPackage;
@@ -424,7 +404,7 @@ namespace ScadaProject.Controllers
                 tempProduct.TotalAmounts = sum1;
                 tempProduct.TotalDamaged = sum2;
                 tempProduct.TotalEmpry = sum3;
-                tempProduct.PerDamaged = sum2 * 100  / sum1 ;
+                tempProduct.PerDamaged = sum2 * 100 / sum1;
                 tempProduct.PerEmpry = sum3 * 100 / sum1;
                 ProductSummaryList.Add(tempProduct);
             }
@@ -432,5 +412,124 @@ namespace ScadaProject.Controllers
             return View(ProductSummaryList);
         }
         //ProductReport && ShowGraph---------------------------------------------------------------------
+
+        public IActionResult GiamSat()
+        {
+            IEnumerable<Product> objCategoryList = _db.Products.ToList();
+            IEnumerable<SettingPLC> objCategoryList_settingplc = _db.SettingPLCs.ToList();
+            List<String> ProductList = new List<String>();
+            List<GiamSat> ProductSummaryList = new List<GiamSat>();
+            Random rand = new Random();
+            var tempProduct = new GiamSat();
+            var tempProduct1 = new GiamSat();
+            var tempProduct2 = new GiamSat();
+            var tempProduct3 = new GiamSat();
+            int sum1 = 0;
+            int sum2 = 0;
+            int sum3 = 0;
+            int sum4 = 0;
+            int sum5 = 0;
+            int sum6 = 0;
+            int sum7 = 0;
+            int sum8 = 0;
+            int sum9 = 0;
+            int sum10 = 0;
+            int sum11 = 0;
+            int sum12 = 0;
+
+            foreach (var obj in objCategoryList)
+            {
+                if (obj.ProductionLine == 1)
+                {
+                    sum1 += obj.TotalPackage;
+                    sum2 += obj.DamagedPackage;
+                    sum3 += obj.EmptyPackage;
+                }
+
+                if (obj.ProductionLine == 2)
+                {
+                    sum4 += obj.TotalPackage;
+                    sum5 += obj.DamagedPackage;
+                    sum6 += obj.EmptyPackage;
+                }
+                if (obj.ProductionLine == 3)
+                {
+                    sum7 += obj.TotalPackage;
+                    sum8 += obj.DamagedPackage;
+                    sum9 += obj.EmptyPackage;
+                }
+                if (obj.ProductionLine == 4)
+                {
+                    sum10 += obj.TotalPackage;
+                    sum11 += obj.DamagedPackage;
+                    sum12 += obj.EmptyPackage;
+                }
+            }
+            foreach (var obj in objCategoryList_settingplc)
+            {
+                if (obj.DayChuyen == 1)
+                {
+                    tempProduct.TocDoChuan = obj.TocDoChuan;
+                }
+
+                if (obj.DayChuyen == 2)
+                {
+                    tempProduct1.TocDoChuan = obj.TocDoChuan;
+                }
+
+                if (obj.DayChuyen == 3)
+                {
+                    tempProduct2.TocDoChuan = obj.TocDoChuan;
+                }
+
+                if (obj.DayChuyen == 4)
+                {
+                    tempProduct3.TocDoChuan = obj.TocDoChuan;
+                }
+            }
+
+            tempProduct.DayChuyen = 1;
+            tempProduct.TotalAmounts = sum1;
+            tempProduct.TotalDamaged = sum2;
+            tempProduct.TotalEmpry = sum3;
+            tempProduct.SanLuongGoi = sum1 - sum2 - sum3;
+            tempProduct.PerDamaged = sum2 * 100 / sum1;
+            tempProduct.PerEmpry = sum3 * 100 / sum1;
+            tempProduct.HieuSuat = rand.Next(60, 95);
+            ProductSummaryList.Add(tempProduct);
+
+            tempProduct1.DayChuyen = 2;
+            tempProduct1.TotalAmounts = sum4;
+            tempProduct1.TotalDamaged = sum5;
+            tempProduct1.TotalEmpry = sum6;
+            tempProduct1.SanLuongGoi = sum4 - sum5 - sum6;
+            tempProduct1.PerDamaged = sum5 * 100 / sum4;
+            tempProduct1.PerEmpry = sum6 * 100 / sum4;
+            tempProduct1.HieuSuat = rand.Next(60, 95);
+            ProductSummaryList.Add(tempProduct1);
+
+            tempProduct2.DayChuyen = 3;
+            tempProduct2.TotalAmounts = sum7;
+            tempProduct2.TotalDamaged = sum8;
+            tempProduct2.TotalEmpry = sum9;
+            tempProduct2.SanLuongGoi = sum7 - sum8 - sum9;
+            tempProduct2.PerDamaged = sum8 * 100 / sum7;
+            tempProduct2.PerEmpry = sum9 * 100 / sum7;
+            tempProduct2.HieuSuat = rand.Next(60, 95);
+            ProductSummaryList.Add(tempProduct2);
+
+            tempProduct3.DayChuyen = 4;
+            tempProduct3.TotalAmounts = sum10;
+            tempProduct3.TotalDamaged = sum11;
+            tempProduct3.TotalEmpry = sum12;
+            tempProduct3.SanLuongGoi = sum10 - sum11 - sum12;
+            tempProduct3.PerDamaged = sum11 * 100 / sum10;
+            tempProduct3.PerEmpry = sum12 * 100 / sum10;
+            tempProduct3.HieuSuat = rand.Next(60, 95);
+            ProductSummaryList.Add(tempProduct3);
+
+            Response.Headers.Add("Refresh", "3000");
+            return View(ProductSummaryList);
+        }
     }
 }
